@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.main-container{
+  margin: auto;
+  width: 70%;
+  min-width: 400px;
+  padding: 50px 0;
+  background-color: rgb(215, 239, 250);
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 400px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+button {
+  border-radius: 4px;
+  padding: 2px;
+  font-weight: 500;
+  color: aliceblue;
+  border: 0;
+  transition: .1s ease-out;
+}
+.create-account {
+  background-color: #198754;
+}
+.google {
+  background-color: #dc3545;
+}
+.facebook {
+  background-color: #0d6efd;
+}
+button:hover {
+  color: #000;
+}
+input{
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid rgb(170, 179, 184);
+  outline: 0;
+  border-left: 30px solid #adb5bd;
+  padding: 2px 10px;
+}
+input:current {
+  border-left: 30px solid #84d8ff;
+  outline: 0;
+}
+input:hover, input:focus{
+  outline: 1px solid #0d6efd;
+}
+h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #0948a8;
+}
+span {
+  font-weight: 600;
+  font-size: 12px;
+}
+p {
+  text-align: center;
+  margin-bottom: 4px;
+  color: #495057;
+  font-weight: 600;
+}
+a{
+  font-weight: 600;
+  color: #0d6efd;
+  text-decoration: none;
+}
+a:hover {
+  color: #dc3545;
+}
+button:focus-visible, a:focus-visible {
+  outline: 4px solid #63a2ff;
+  border-radius: 4px;
+}
