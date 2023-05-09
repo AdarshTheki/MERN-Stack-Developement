@@ -1,0 +1,22 @@
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: normal;
+}
+.PersonBox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background-color: antiquewhite;
+}
+.Props {
+  background-color: rgb(97, 97, 97);
+  color: rgb(238, 73, 169);
+  padding: 5px 15px;
+  border-radius: 100vmax;
+}
+.Props span {
+  font-weight: 900;
+  color: aliceblue;
+}
