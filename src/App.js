@@ -15,7 +15,8 @@ import React, { Component } from "react";
 // import Container from './CodeWithHarry/Container.jsx';
 // import Home from './Component_5/Home';
 // import FetchData from './Component_5/FetchData';
-import FetchPostData from './Component_5/FetchPostData';
+// import FetchPostData from './Component_5/FetchPostData';
+
 
 
 
@@ -37,7 +38,7 @@ class App extends Component {
         {/* <Navigation/> */}
         {/* <Home/> */}
         {/* <FetchData/> */}
-        <FetchPostData/>
+        {/* <FetchPostData/> */}
       </div>
     );
   }
