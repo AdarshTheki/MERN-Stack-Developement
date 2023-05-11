@@ -1,16 +1,16 @@
 import React from 'react'
 
 export default function Result(props) {
-  const { weatherData } = props;
-  console.log(props.weatherData);
+  const {weatherData: data} = props;
+  console.log(data.main.temp);
   return (
     <div className='Home'>
       <h1>Result</h1>
-      <p>""</p>
+      <p></p>
       <table style={{width:"100%"}}>
         <thead style={{border:"1px solid black", textAlign:"center"}}>
           <tr>
-            <th>City Name  ( temp ) Description</th>
+            <th>City:  Description</th>
           </tr>
         </thead>
         <tbody style={{border:"1px solid black"}}>

@@ -32,7 +32,8 @@ export default class Weather extends Component {
       lat: "",
       lon: "",
       city: "",
-      weatherData: null,
+      kelvin:"",
+      weatherData: "",
     });
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -44,6 +45,7 @@ export default class Weather extends Component {
                   // console.log(result);
                   this.setState({ 
                     city: result.data.name,
+                    kelvin: result.data.main.temp,
                     weatherData: result.data,
                   })
                 })
@@ -71,8 +73,9 @@ export default class Weather extends Component {
           weatherData={this.state.weatherData}
           change={this.changeHandler}
           location={this.locationHandler}
-        />
+          />
         <Result 
+          city={this.state.city}
           weatherData={this.state.weatherData}
         />
       </div>

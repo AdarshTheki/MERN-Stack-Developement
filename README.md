@@ -66,7 +66,7 @@ In React, `bind()` is a method that is used to bind the value of this to a speci
 
 ## Axios in React:
 It provides an easy-to-use API for performing asynchronous HTTP requests with features such as request and response interception, automatic JSON parsing, and error handling.
-```jsx
+```js
   // install: npm i axios --s 
   useEffect(() => {
     axios.get('https://api.example.com/data')
@@ -80,7 +80,7 @@ Redux follows the `unidirectional data` flow. It means that your application dat
 ![Redux GIF](https://d33wubrfki0l68.cloudfront.net/01cc198232551a7e180f4e9e327b5ab22d9d14e7/b33f4/assets/images/reduxdataflowdiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif)
 This is just a basic example of how Redux works, but it should give you a sense of how the flow of data works in a Redux application. By providing a predictable and organized way to manage application state, Redux can help make your applications more maintainable and easier to reason about.
 
-## How to Render List in react
+## Render List
 To render a list in React, you can use the `map()` function to iterate over an array of data and generate a series of JSX elements for each item in the array.
 ```jsx
 const items = props.items;
@@ -89,3 +89,62 @@ const items = props.items;
         <li key={index}>{item}</li>
       ))} </ul>
 ```
+
+## Redux
+`Redux` is a predictable state container for JavaScript applications that helps manage state across the application in a more organized way. It is commonly used with React to manage the state of components and provide a single source of truth for the application's data.
+
+1. **Install Redux** and react-redux packages:
+   ```bash
+   npm install redux react-redux
+   ```
+2. **Create a store:**
+   A store is the central object that holds the state of the application. To create a store, you need to import `createStore` from the redux package and define an initial state. You can create a file called `store.js` and add the following code:
+   
+   ```javascript
+   import { createStore } from 'redux';
+   const initialState = {
+     // define your initial state here
+   };
+   const store = createStore(reducer, initialState);
+   export default store;
+   ```
+   In the code above, `reducer` is a function that takes in the current state and an action as arguments and returns a new state. We will define the reducer function in the next step.
+
+3. **Create a reducer:**
+   A reducer is a pure function that receives the current state and an action as input and returns the new state based on the action. To create a reducer, you need to create a file called `reducer.js` and add the following code:
+   
+   ```javascript
+   const initialState = {
+     // define your initial state here
+   };
+   const reducer = (state = initialState, action) => {
+     switch (action.type) {
+       // define your cases here
+       default:
+         return state;
+     }
+   };
+   export default reducer;
+   ```
+   
+   In the code above, we define the `initialState` and the `reducer` function that receives the current state and an action as input and returns the new state based on the action.
+
+4. **Connect the store to the app:**
+   To connect the store to the app, you need to use the `Provider` component from the react-redux package. You can wrap your root component with the `Provider` component and pass the store as a prop. You can create a file called `index.js` and add the following code:
+   ```jsx
+   import React from 'react';
+   import ReactDOM from 'react-dom';
+   import { Provider } from 'react-redux';
+   import store from './store';
+   import App from './App';
+   ReactDOM.render(
+     <Provider store={store}>
+       <App />
+     </Provider>,
+     document.getElementById('root')
+   );
+   ```
+   
+   In the code above, we import the `Provider` component from the react-redux package, the `store` from the `store.js` file, and the `App` component. We wrap the `App` component with the `Provider` component and pass the `store` as a prop.
+
+With the above steps, you have set up Redux and the store in your React application. Now you can start using Redux to manage the state of your components.

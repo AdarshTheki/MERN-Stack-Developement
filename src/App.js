@@ -17,9 +17,6 @@ import React, { Component } from "react";
 // import FetchData from './Component_5/FetchData';
 // import FetchPostData from './Component_5/FetchPostData';
 
-
-
-
 class App extends Component {
   render() {
     return (
