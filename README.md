@@ -78,21 +78,6 @@ It provides an easy-to-use API for performing asynchronous HTTP requests with fe
 Redux follows the `unidirectional data` flow. It means that your application data will follow in one-way binding data flow. As the application grows & becomes complex, it is hard to reproduce issues and add new features if you have no control over the state of your application.
 
 ![Redux GIF](https://d33wubrfki0l68.cloudfront.net/01cc198232551a7e180f4e9e327b5ab22d9d14e7/b33f4/assets/images/reduxdataflowdiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif)
-This is just a basic example of how Redux works, but it should give you a sense of how the flow of data works in a Redux application. By providing a predictable and organized way to manage application state, Redux can help make your applications more maintainable and easier to reason about.
-
-## Render List
-To render a list in React, you can use the `map()` function to iterate over an array of data and generate a series of JSX elements for each item in the array.
-```jsx
-const items = props.items;
-
- <ul> {items.map((item, index) => (
-        <li key={index}>{item}</li>
-      ))} </ul>
-```
-
-## Redux
-`Redux` is a predictable state container for JavaScript applications that helps manage state across the application in a more organized way. It is commonly used with React to manage the state of components and provide a single source of truth for the application's data.
-
 1. **Install Redux** and react-redux packages:
    ```bash
    npm install redux react-redux
@@ -148,3 +133,4 @@ const items = props.items;
    In the code above, we import the `Provider` component from the react-redux package, the `store` from the `store.js` file, and the `App` component. We wrap the `App` component with the `Provider` component and pass the `store` as a prop.
 
 With the above steps, you have set up Redux and the store in your React application. Now you can start using Redux to manage the state of your components.
+
