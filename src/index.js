@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 // import App from './WeatherApp/App';
 // import App from "./App";
-import App from "./Mosh/App";
+import App from "./Router/App"
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
