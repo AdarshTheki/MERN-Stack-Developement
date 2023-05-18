@@ -1,0 +1,28 @@
+/* How style to Links:
+Link change to NavLink 
+Note: Link does not access css
+      always ACTIVE LINK
+*/
+body {
+  padding: 20px;
+  margin-inline: auto;
+  text-align: center;
+}
+ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.nav-links {
+  text-decoration: none;
+  color: #0d6efd;
+  font-weight: 700;
+  font-size: 20px;
+  padding: 2px 12px;
+  border-radius: 5px;
+}
+.nav-links:hover {
+  color: #d63384;
+  outline: 1px solid #d6338481;
+}
