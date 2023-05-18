@@ -64,6 +64,19 @@ State: To `store` and manage component data. And also reference to the `state ob
 ```
 In React, `bind()` is a method that is used to bind the value of this to a specific function. `onClick={this.handleClick.bind(this)}`
 
+## Router
+- useParams(): The `useParams` hook returns an object of key/value pairs of the dynamic params from the current URL that were matched by the `<Route path>`. Child routes inherit all params from their parent routes.
+  ```jsx
+  <Route path='/user/:name' element={<User/>} />
+  <Link path='/user/anil'> Anil </Link>
+  ```
+
+- useSearchParams(): The `useSearchParams` hook is used to read and modify the query string in the URL for the current location. Like React's own useState hook, useSearchParams returns an array of two values:
+  ```jsx
+  let [searchParams, setSearchParams] = useSearchParams();
+  const age = searchParams.get('age');
+  ``` 
+
 ## Axios in React:
 It provides an easy-to-use API for performing asynchronous HTTP requests with features such as request and response interception, automatic JSON parsing, and error handling.
 ```js
