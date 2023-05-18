@@ -1,15 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+// import "./index.css";
 // import App from './WeatherApp/App';
 // import App from "./App";
-import App from "./Router/App"
-import reportWebVitals from "./reportWebVitals";
+// import App from "./Router/App";
+// import App from "./Restaurant/Basic/App";
+import Use from "./Restaurant/Hooks/useState";
 
+import reportWebVitals from "./reportWebVitals";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    <Use/>
   </React.StrictMode>
 );
 
