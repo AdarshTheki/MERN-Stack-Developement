@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useReducer } from "react";
 
-export default function Tutorial() {
-  //? UseState How Works
+const Hooks = () => {
+
+  //! UseState How Works
   const initialData = 0;
   const [myNum, setMyNum] = useState(initialData);
 
-  //? UseEffect How Works
+  //! UseEffect How Works
   useEffect(() => {
     document.title = `CHAT(${myNum})`;
   });
 
-  //? Reducer How Works
+  //! Reducer How Works
   const Reducer = (state, action) => {
     if (action.type === "INCREMENT") {
       state = state + 1;
@@ -48,3 +49,4 @@ export default function Tutorial() {
     </>
   );
 }
+export default Hooks;
