@@ -1,0 +1,236 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --COLOR-1: #f5f5f5;
+  --COLOR-2: #1a3376;
+  --COLOR-3: #e43737;
+  --COLOR-4: #8a27e6;
+  --COLOR-5: #40a8fd;
+  --COLOR-6: #fdb200;
+  --COLOR-7: #d8bba9;
+}
+body {
+  font-family: sans-serif;
+  background-color: var(--COLOR-1);
+  scroll-behavior: smooth;
+}
+
+.header-section {
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 1.2rem;
+  background-color: var(--COLOR-2);
+  padding: 0 30px;
+}
+.header-section_left a {
+  color: var(--COLOR-1);
+  text-decoration: none;
+}
+.header-section_right {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+/* toggle section */
+.close-toggle, .open-toggle,.menu-btn, .close-btn {
+  display: none;
+}
+@media (max-width: 50em) {
+  .header-section_right {
+    display: none;
+  }
+  .open-toggle{
+    padding: 10px;
+    position: absolute;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    inset: 64px 0px 250px 0px;
+    background-color: rgba(9, 52, 92, 0.664);
+  }
+  .toggle-links {
+    width: 60vw;
+    text-align: center;
+    background-color: var(--COLOR-5);
+    color: var(--COLOR-1);
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    padding: 8px 12px;
+    display: inline-block;
+  }
+  .toggle-links:hover {
+    color: #000;
+  }
+  .menu-btn, .close-btn {
+    display: block;
+    color: #f5f5f5;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+}
+
+.links {
+  color: var(--COLOR-1);
+  margin-right: 10px;
+  padding: 4px;
+  text-decoration: none;
+}
+.links:hover,
+.links:focus {
+  color: var(--COLOR-3);
+}
+
+.main-section {
+  max-width: 1124px;
+  margin: 20px auto;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.main-section_left {
+  color: var(--COLOR-2);
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 1.3;
+  padding: 0 50px 0 0;
+}
+.main-section_left span {
+  font-family: "Segoe UI";
+  color: var(--COLOR-4);
+}
+.button {
+  margin-right: 10px;
+  display: inline-block;
+  padding: 8px 12px;
+  font-size: 16px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  background-color: #6c757d;
+  color: #ffffff;
+}
+.button:hover {
+  color: #00000077;
+}
+.main-section_right img {
+  width: 100%;
+}
+
+hr {
+  border: 0;
+  padding: 1px;
+  background-color: #000;
+}
+
+.second-section {
+  height: 520px;
+  text-align: center;
+  padding: 40px 10px;
+  background-color: rgb(0, 0, 33);
+}
+.second-section span {
+  color: var(--COLOR-3);
+  font-weight: 700;
+}
+.second-section-heading {
+  color: var(--COLOR-6);
+  margin-top: 5px;
+}
+
+.box {
+  background-color: white;
+  width: 80vw;
+  height: 2px;
+  margin: 56px auto;
+  display: flex;
+  justify-content: space-around;
+}
+.vertical {
+  height: 40px;
+  background-color: white;
+  width: 1px;
+  margin: 0 100px;
+}
+.vertical img {
+  position: relative;
+  top: -25px;
+  left: -20px;
+  width: 40px;
+}
+.vertical h1,
+.vertical p {
+  width: 200px;
+  position: relative;
+  left: -100px;
+  text-align: center;
+}
+.vertical h1 {
+  color: var(--COLOR-1);
+}
+.vertical p {
+  color: rgb(217, 233, 238);
+}
+.vertical b {
+  color: #8a27e6;
+  font-weight: 600;
+}
+small {
+  font-size: 1rem;
+  color: #40a8fd;
+  font-weight: 600;
+}
+.vertical p a {
+  font-weight: 400;
+  color: #40a8fd;
+}
+.vertical p a:hover {
+  color: #e43737;
+}
+.footer-main-container {
+  padding-top: 80px;
+  background-color: rgb(0, 0, 22);
+}
+.footer-container {
+  margin: auto;
+  max-width: 1050px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150px;
+  color: #f5f5f5;
+}
+.footer-content a {
+  margin: 10px;
+  text-decoration: none;
+  color: var(--COLOR-1);
+  font-weight: 600;
+}
+.footer-content a:hover {
+  color: var(--COLOR-3);
+}
+.footer-copyright {
+  color: var(--COLOR-1);
+  text-align: center;
+}
+.footer-copyright p {
+  margin-top: 10px;
+}
