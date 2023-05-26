@@ -1,29 +1,27 @@
 # Getting Started with Create React App
 
 ## Feature in React:
-
-1.  Component-based architecture
-2.  Virtual DOM
-3.  JSX syntax
-4.  Unidirectional data flow (One-way Binding)
-5.  State management
-6.  React hooks
-7.  Performance optimization
+- Component-based architecture
+- Virtual DOM
+- JSX syntax
+- Unidirectional data flow (One-way Binding)
+- State management
+- React hooks
+- Performance optimization
 
 **Install `Node.js:`** React.js is built on top of Node.js, so you'll need to install it first.
-
-```cmd
-npm install -g create-react-app
-create-react-app my-app
-cd my-app
-npm start
+```bash
+    npm install -g create-react-app
+    create-react-app my-app
+    cd my-app
+    npm start
 ```
 
 # React Interview Questions & Answers
 
-### Downloading PDF/Epub formats
+### Downloading PDF Formats
 
-You can download the PDF and Epub version of this repository from the latest run on the [actions tab](https://github.com/sudheerj/reactjs-interview-questions/actions).
+You can download the PDF and Epub version of this repository from the latest run on the [actions tab](https://github.com/AdarshTheki/React-Development/actions).
 
 ### Table of Contents
 
