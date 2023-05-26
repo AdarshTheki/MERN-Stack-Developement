@@ -42,7 +42,7 @@ export default class Weather extends Component {
               axios.get(
                   `https://api.openweathermap.org/data/2.5/weather?lat=${this.state.lat}&lon=${this.state.lon}&appid=eed9e24093db9fab5e6533aafd084294`)
                 .then((result) => {
-                  // console.log(result);
+                  console.log(result);
                   this.setState({ 
                     city: result.data.name,
                     kelvin: result.data.main.temp,
