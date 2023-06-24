@@ -1,13 +1,6 @@
 import "./App.css";
 import { useState } from "react";
-
-// const data = [
-//   { id: 1, name: "Adarsh-1" },
-//   { id: 2, name: "Adarsh-2" },
-//   { id: 3, name: "Adarsh-3" },
-//   { id: 4, name: "Adarsh-4" },
-//   { id: 5, name: "Adarsh-5" },
-// ];
+import {data} from './Data.js'
 
 function UseState() {
   
