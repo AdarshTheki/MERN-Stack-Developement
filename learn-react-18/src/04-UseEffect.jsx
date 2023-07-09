@@ -2,9 +2,11 @@ import { useState } from "react";
 import "./App.css";
 import { useEffect } from "react";
 
+// Fetch the url_data using useEffect() Hooks use:
+
 const url = "https://api.github.com/users";
 
-function UseEffect() {
+const FetchComponents = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -37,6 +39,6 @@ function UseEffect() {
       </ul>
     </div>
   );
-}
+};
 
-export default UseEffect;
+export default FetchComponents;

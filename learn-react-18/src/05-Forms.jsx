@@ -1,7 +1,7 @@
+// Contact Forms Submit the Data:-
 import { useState } from "react";
 
 const Forms = () => {
-  // Contact Forms:-
   const [users, setUsers] = useState({
     name: "",
     email: "",

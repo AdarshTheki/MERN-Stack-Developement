@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Progressive Image</title>
+    <style>
+      div {
+        width: 300px;
+        object-fit:contain;
+      }
+      img {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <!-- Changing Image according to DPR -->
+      <img
+        src="./cat_640px.jpg"
+        srcset="cat_640px.jpg, cat_1240px.jpg 2x, cat_1920px.jpg 3x"
+        alt="min_Image" />
+    </div>
+    <div>
+      <!-- Changing Image according to actual image with in the viewport -->
+      <img
+        src="./cat_640px.jpg"
+        srcset="cat_640px.jpg 640vw, 
+                cat_1240px.jpg 1240vw, 
+                cat_1920px.jpg 1920vw"
+        alt="min_Image" />
+    </div>
+  </body>
+</html>
