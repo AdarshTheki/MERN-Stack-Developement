@@ -2,23 +2,29 @@ import { useState } from "react";
 import "./App.css";
 import { useEffect } from "react";
 
-// Fetch the url_data using useEffect() Hooks use:
+/**
+ * It is used to Data fetching, Subscriptions, Manual changes to DOM etc.
+ * Only one time page rerender when page load.
+ * Can you useState use or update to rerender the useEffect.
+ * Not used to inside of if else condition.
+ **/
 
 const url = "https://api.github.com/users";
 
 const FetchComponents = () => {
   const [users, setUsers] = useState([]);
 
+  const fetchData = async () => {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      setUsers(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(url);
-        const user = await response.json();
-        setUsers(user);
-      } catch (err) {
-        console.log(err);
-      }
-    };
     fetchData();
   }, []);
 
@@ -31,8 +37,9 @@ const FetchComponents = () => {
           return (
             <li key={id}>
               <img src={avatar_url} alt={login} width='50px' />
-              <div>{login}</div>
-              <a href={html_url}>Profile</a>
+              <p>
+                Name:{login} & Link: <a href={html_url}>Profile</a>
+              </p>
             </li>
           );
         })}
@@ -40,5 +47,4 @@ const FetchComponents = () => {
     </div>
   );
 };
-
 export default FetchComponents;

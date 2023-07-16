@@ -1,9 +1,9 @@
+// This is Vanilla javascript process:-
 import { useState } from "react";
 
 function FormsAPI() {
   const [value, setValue] = useState("");
 
-  // This is Vanilla javascript process:-
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
