@@ -14,6 +14,7 @@ function LowerState() {
 export default LowerState;
 
 const List = ({ people }) => {
+  console.log("Pass value")
   return (
     <div>
       {people.map((person) => {
@@ -24,7 +25,7 @@ const List = ({ people }) => {
 };
 
 const Person = ({ name }) => {
-  // console.log("render");
+  console.log("render");
   return (
     <div>
       <h4>{name}</h4>

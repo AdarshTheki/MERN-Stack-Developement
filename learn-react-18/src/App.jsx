@@ -12,22 +12,23 @@ import Reducer from './10-UseReducer'
 import Performance from './11-Performance'
 import ProgressiveImage from './13-ProgressiveImage/ProgressiveImage';
 
+
 export default function App() {
   // const {name} = useGlobalContext();
   // console.log(name)
   return (
     <div>
-      {/* <UseState/> */}
-      {/* <UseEffect/> */}
       {/* <MultipleReturn/> */}
       {/* <Operators/> */}
+      {/* <UseState/> */}
+      {/* <UseEffect/> */}
       {/* <Forms/> */}
       {/* <FormsAPI/> */}
       {/* <CustomHook/>  */}
       {/* <ContextAPI/> */}
       {/* <Reducer/> */}
-      {/* <Performance/> */}
-      <ProgressiveImage/>
+      <Performance/>
+      {/* <ProgressiveImage/> */}    
     </div>
   );
 }

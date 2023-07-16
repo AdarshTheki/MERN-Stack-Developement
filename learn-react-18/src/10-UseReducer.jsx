@@ -7,9 +7,8 @@ const defaultState = {
   isLoading: false,
 };
 
-// reducer function whatever state is returned the function is the new state
+// Reducer function whatever state is returned the function is the new state
 const reducer = (state, action) => {
-
   if (action.type === "CLEAR_LIST") {
     return { ...state, people: [] };
   }
@@ -17,15 +16,17 @@ const reducer = (state, action) => {
     return { ...state, people: data };
   }
   if (action.type === "REMOVE_ITEM") {
-    let newPeople = state.people.filter((person) => person.id !== action.payload.id);
+    let newPeople = state.people.filter(
+      (person) => person.id !== action.payload.id
+    );
     return { ...state, people: newPeople };
   }
   return state;
 };
 
-// dispatch ({type:"SOME_ACTION"}) an action handle it in reducer, return new state
 const UseReducerApp = () => {
   const [state, dispatch] = useReducer(reducer, defaultState);
+  console.log(state);
   const clearList = () => {
     dispatch({ type: "CLEAR_LIST" });
   };
@@ -36,8 +37,6 @@ const UseReducerApp = () => {
     dispatch({ type: "REMOVE_ITEM", payload: { id } });
   };
 
-  console.log(state)
-  
   return (
     <div>
       {state.people.map((ele) => {
@@ -45,18 +44,12 @@ const UseReducerApp = () => {
         return (
           <div key={id}>
             <h3>{name}</h3>
-            <button type='button' onClick={() => removeItem(id)}>
-              Remove One
-            </button>
+            <button onClick={() => removeItem(id)}>Remove One</button>
           </div>
         );
       })}
-      <button type='button' onClick={clearList}>
-        ClearList
-      </button>
-      <button type='button' onClick={resetList}>
-        ResetList
-      </button>
+      <button onClick={clearList}>ClearList</button>
+      <button onClick={resetList}>ResetList</button>
     </div>
   );
 };

@@ -26,6 +26,7 @@ const FetchData = () => {
 export default FetchData;
 
 
+// Custom Hooks to useFetch Data:
 const useFetch = (url) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -41,12 +42,11 @@ const useFetch = (url) => {
           setIsLoading(false);
           return;
         }
-        // change to response
         const response = await resp.json();
         setData(response);
       } catch (error) {
         setIsError(true);
-        // console.log(error);
+        console.log(error.message);
       }
       // hide loading
       setIsLoading(false);

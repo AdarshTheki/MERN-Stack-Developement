@@ -1,7 +1,7 @@
+// This is a Progressive image of react 
 import React, { useEffect, useState } from "react";
 import HD_image from "./large.png";
 import Tiny_image from "./min.jpg";
-// This is a Progressive image of react 
 
 const App = () => {
   return (
@@ -16,7 +16,6 @@ const App = () => {
   );
 };
 export default App;
-
 
 
 const ProgressiveImage = (props) => {

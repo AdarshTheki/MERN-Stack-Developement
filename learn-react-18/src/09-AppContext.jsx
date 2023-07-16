@@ -2,8 +2,6 @@ import React, { createContext, useContext, useState } from "react";
 
 const GlobalContext = createContext();
 
-export const useGlobalContext = () => useContext(GlobalContext);
-
 const AppContext = ({ children }) => {
   const [name, setName] = useState("peter");
   return (
@@ -13,3 +11,9 @@ const AppContext = ({ children }) => {
   );
 };
 export default AppContext;
+// import AppContext to wrap the main components
+
+// use global context
+const useGlobalContext = () => useContext(GlobalContext);
+
+export {useGlobalContext}
