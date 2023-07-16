@@ -39,16 +39,6 @@ function MultipleReturn() {
     return <h2>There was a Error...</h2>  
   }
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     // done fetching data
-  //     setIsLoad(false)
-  //   },3000);
-  // }, []);
-  // if (isLoad) {
-  //   return <h2>Loading....</h2>;
-  // }
-  
   // Note: destructure alway last initialize
   const {avatar_url, name, company, bio} = users
   return (
@@ -62,5 +52,14 @@ function MultipleReturn() {
     </div>
   );
 }
-
 export default MultipleReturn;
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     // done fetching data
+  //     setIsLoad(false)
+  //   },3000);
+  // }, []);
+  // if (isLoad) {
+  //   return <h2>Loading....</h2>;
+  // }
