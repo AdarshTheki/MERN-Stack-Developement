@@ -10,8 +10,8 @@ import ContextAPI from './08-ContextAPI';
 import { useGlobalContext } from './09-AppContext';
 import Reducer from './10-UseReducer'
 import Performance from './11-Performance'
-import ProgressiveImage from './13-ProgressiveImage/ProgressiveImage';
-
+import ProgressiveImage from './13-ProgressiveImage'
+import Routers from './14-Routers'
 
 export default function App() {
   // const {name} = useGlobalContext();
@@ -27,8 +27,9 @@ export default function App() {
       {/* <CustomHook/>  */}
       {/* <ContextAPI/> */}
       {/* <Reducer/> */}
-      <Performance/>
-      {/* <ProgressiveImage/> */}    
+      {/* <Performance/> */}
+      {/* <ProgressiveImage/>     */}
+      <Routers/>      
     </div>
   );
 }

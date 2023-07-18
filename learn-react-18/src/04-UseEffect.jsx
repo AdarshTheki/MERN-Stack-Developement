@@ -26,7 +26,7 @@ const FetchComponents = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   return (
     <div>
