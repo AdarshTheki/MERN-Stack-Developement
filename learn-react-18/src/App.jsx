@@ -12,6 +12,8 @@ import Reducer from './10-UseReducer'
 import Performance from './11-Performance'
 import ProgressiveImage from './13-ProgressiveImage'
 import Routers from './14-Routers'
+import Dropdown from './15-dropdown-menu'
+
 
 export default function App() {
   // const {name} = useGlobalContext();
@@ -29,7 +31,8 @@ export default function App() {
       {/* <Reducer/> */}
       {/* <Performance/> */}
       {/* <ProgressiveImage/>     */}
-      <Routers/>      
+      {/* <Routers/>       */}
+      <Dropdown/>
     </div>
   );
 }
