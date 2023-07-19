@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  background-color: #222;
+  min-height: 80vh;
+  width: 600px;
+  position: relative;
+}
+.container button {
+  width: 400px;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+}
+.menu {
+  list-style: none;
+  margin: 10px auto;
+  border-radius: 5px;
+  background-color: aliceblue;
+  width: 400px;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+.menu li {
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: capitalize;
+  color: #333;
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding: 5px 0 0 20px;
+  border-bottom: 1px solid #444;
+  transition: all 0.3s ease-out;
+}
+.menu li:hover {
+  background-color: #333;
+  color: aliceblue;
+}
+.menu .icon {
+  position: relative;
+  left: 30px;
+  top: 5px;
+  z-index: 2;
+  font-size: 1.5rem;
+}
+.menu input {
+  position: relative;
+  margin-top: 10px;
+  outline: 0;
+  padding: 4px 0 4px 60px;
+  font-size: 1.2rem;
+}
+.block {
+  display: block;
+}
+.hidden {
+  display: none;
+}
