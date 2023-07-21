@@ -1,18 +1,21 @@
 import './App.css'
-import MultipleReturn from './01-MultipleReturn'
-import Operators from "./02-Operators";
-import UseState from './03-UseState'
-import UseEffect from './04-UseEffect'
-import Forms from  './05-Forms'
-import FormsAPI from './06-FormsAPI';
-import CustomHook from './07-CustomHook'
-import ContextAPI from './08-ContextAPI';
-import { useGlobalContext } from './09-AppContext';
-import Reducer from './10-UseReducer'
-import Performance from './11-Performance'
-import ProgressiveImage from './13-ProgressiveImage'
+// import MultipleReturn from './01-MultipleReturn'
+// import Operators from "./02-Operators";
+// import UseState from './03-UseState'
+// import UseEffect from './04-UseEffect'
+// import Forms from  './05-Forms'
+// import FormsAPI from './06-FormsAPI';
+// import CustomHook from './07-CustomHook'
+// import ContextAPI from './08-ContextAPI';
+// import { useGlobalContext } from './09-AppContext';
+// import Reducer from './10-UseReducer'
+// import Performance from './11-Performance'
+// import ProgressiveImage from './13-ProgressiveImage'
+// import Routers from './Router/Main'
+// import Dropdown from './16-dropdown'
+// import Authentication from "./Router/Authentication";
+// import TodoList from "./17-HOC";
 import Routers from './14-Routers'
-import Dropdown from './16-dropdown'
 
 export default function App() {
   // const {name} = useGlobalContext();
@@ -30,8 +33,10 @@ export default function App() {
       {/* <Reducer/> */}
       {/* <Performance/> */}
       {/* <ProgressiveImage/>     */}
-      {/* <Routers/>       */}
-      <Dropdown/>
+      {/* <Dropdown/> */}
+      {/* <Authentication /> */}
+      {/* <TodoList/> */}
+      <Routers/>      
     </div>
   );
 }

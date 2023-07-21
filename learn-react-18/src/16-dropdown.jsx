@@ -32,6 +32,7 @@ const Main = () => {
         <div>
           <BsSearch className='icon' />
           <input
+            autoComplete="off"
             type='text'
             name='country'
             placeholder='Enter your Country'
