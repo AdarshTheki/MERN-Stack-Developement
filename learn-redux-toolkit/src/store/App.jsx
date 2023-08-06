@@ -14,7 +14,7 @@ const App = () => {
   };
 
   const addByValue = () => {
-    dispatch(actions.addBy(100));
+    dispatch(actions.addBy(5));
   };
   return (
     <>
@@ -23,7 +23,7 @@ const App = () => {
       <button onClick={incrementValue}>INCREMENT</button>
       <button onClick={decrementValue}>DECREMENT</button>
       <br />
-      <button onClick={addByValue}>Add by 10</button>
+      <button onClick={addByValue}>Add by 5</button>
     </>
   );
 };
