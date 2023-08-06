@@ -5,25 +5,25 @@ const App = () => {
   const counter = useSelector((state) => state.counter);
   const dispatch = useDispatch();
 
-  const increment = () => {
+  const incrementValue = () => {
     dispatch(actions.increment());
   };
 
-  const decrement = () => {
+  const decrementValue = () => {
     dispatch(actions.decrement());
   };
 
-  const addBy = () => {
+  const addByValue = () => {
     dispatch(actions.addBy(100));
   };
   return (
     <>
       <h2>Counter App</h2>
       <h2>{counter}</h2>
-      <button onClick={increment}>INCREMENT</button>
-      <button onClick={decrement}>DECREMENT</button>
+      <button onClick={incrementValue}>INCREMENT</button>
+      <button onClick={decrementValue}>DECREMENT</button>
       <br />
-      <button onClick={addBy}>Add by 10</button>
+      <button onClick={addByValue}>Add by 10</button>
     </>
   );
 };
