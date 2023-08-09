@@ -2,23 +2,32 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const counterSlice = createSlice({
   name: "counter",
-  initialState: { counter: 0 },
+  initialState: { value: 0 },
   reducers: {
     increment(state, action) {
-      state.counter++;
-    },    
+      state.value++;
+    },
     decrement(state, action) {
-        state.counter--;
+      state.value--;
     },
     addBy(state, action) {
-      state.counter += action.payload;
+      state.value += action.payload;
     },
+    multiply(state, action) {
+      state.value *= action.payload
+    }
   },
 });
 export const actions = counterSlice.actions;
 
+// And its export default to the store to Reducers 
+const counterReducer = counterSlice.reducer
 
 // This is a Reducer and import in the main.jsx Wrap components with Provider
 export const store = configureStore({
-  reducer: counterSlice.reducer,
+  reducer: {
+    counters: counterReducer
+    // can you create multiple reducers
+  }
 });
+

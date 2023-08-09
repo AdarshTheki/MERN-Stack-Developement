@@ -1,8 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { actions } from "./index";
 
-const App = () => {
-  const counter = useSelector((state) => state.counter);
+const Home = () => {
+  const counter = useSelector((state) => state.counters.value);
   const dispatch = useDispatch();
 
   const incrementValue = () => {
@@ -16,16 +16,21 @@ const App = () => {
   const addByValue = () => {
     dispatch(actions.addBy(5));
   };
+  const multiply = () => {
+    dispatch(actions.multiply(5));
+  };
   return (
     <>
-      <h2>Counter App</h2>
+      <h2>Counter Home</h2>
       <h2>{counter}</h2>
       <button onClick={incrementValue}>INCREMENT</button>
       <button onClick={decrementValue}>DECREMENT</button>
       <br />
       <button onClick={addByValue}>Add by 5</button>
+      <br />
+      <button onClick={multiply}>Multiply by 5</button>
     </>
   );
 };
 
-export default App;
+export default Home;
