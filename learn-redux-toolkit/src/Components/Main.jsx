@@ -1,10 +1,10 @@
 import React from "react";
-import { fakeUserData } from "./API";
+import { fakeUserData } from "./userAPI";
 // used and change to state used this to useDispatch and action
 import { useDispatch, useSelector } from "react-redux";
-import { addUser, removeUser, deleteAllUser, clearAllTheUser } from "./store/index";
+import { addUser, removeUser, deleteAllUser, clearAllTheUser } from "./userSlice";
 
-const App = () => {
+const Main = () => {
   const dispatch = useDispatch();
 
   const addNewUser = (payload) => {
@@ -33,7 +33,7 @@ const App = () => {
   );
 };
 
-export default App;
+export default Main;
 
 const DisplayUsers = () => {
   const dispatch = useDispatch();
