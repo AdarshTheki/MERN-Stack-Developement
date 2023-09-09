@@ -23,6 +23,7 @@ li {
 .cartItem {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border: 1px solid black;
   border-radius: 10px;
   padding: 20px;
@@ -30,11 +31,16 @@ li {
   font-weight: bold;
   background: #2f3c7e;
   color: #fbeaeb;
+  box-shadow: 1px 4px 8px 6px #bbb;
+}
+.buttons{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 .cart-actions {
   color: white;
   font-size: 20px;
-  width: 50px;
   border: none;
   background: rgb(10, 7, 24);
 }
