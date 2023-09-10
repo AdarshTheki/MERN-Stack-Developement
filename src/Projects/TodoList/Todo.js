@@ -4,7 +4,6 @@ import "./Todo.css";
 // get the localStorage data back
 const getLocalData = () => {
   const lists = localStorage.getItem("myTodoList");
-
   if (lists) {
     return JSON.parse(lists);
   } else {
@@ -18,7 +17,7 @@ const Todo = () => {
   const [isEditItem, setIsEditItem] = useState("");
   const [toggleButton, setToggleButton] = useState(false);
 
-  // add the items function
+  // Add the items function
   const addItem = () => {
     if (!inputData) {
       alert("plz fill the data");
@@ -31,7 +30,6 @@ const Todo = () => {
           return curElem;
         })
       );
-
       setInputData("");
       setIsEditItem(null);
       setToggleButton(false);
@@ -45,7 +43,7 @@ const Todo = () => {
     }
   };
 
-  //edit the items
+  // Edit the items
   const editItem = (index) => {
     const item_todo_edited = items.find((curElem) => {
       return curElem.id === index;
@@ -55,7 +53,7 @@ const Todo = () => {
     setToggleButton(true);
   };
 
-  // how to delete items section
+  // How to delete items section
   const deleteItem = (index) => {
     const updatedItems = items.filter((curElem) => {
       return curElem.id !== index;
@@ -63,18 +61,18 @@ const Todo = () => {
     setItems(updatedItems);
   };
 
-  // remove all the elements
+  // Remove all the elements
   const removeAll = () => {
     setItems([]);
   };
 
-  // adding localStorage
+  // Adding localStorage
   useEffect(() => {
     localStorage.setItem("myTodoList", JSON.stringify(items));
   }, [items]);
 
   return (
-    <>
+    <div className="Todo">
       <div className="main-div">
         <div className="child-div">
           <figure>
@@ -125,7 +123,7 @@ const Todo = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
