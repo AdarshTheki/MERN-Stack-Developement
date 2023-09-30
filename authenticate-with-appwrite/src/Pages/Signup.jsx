@@ -1,25 +1,25 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useForm } from "react-hook-form";
-import { authServices } from "../AppWrite/Auth";
-import { login } from "../Redux/authSlice";
-import { Button, Inputs, Logo } from "../Components/index";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useForm } from 'react-hook-form';
+import { authServices } from '../AppWrite/Auth';
+import { login } from '../Redux/authSlice';
+import { Button, Inputs, Logo } from '../Components/index';
 
 function SignUp() {
   const navigate = useNavigate();
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
 
   const create = async (data) => {
-    setError("");
+    setError('');
     try {
       const userData = await authServices.createAccount(data);
       if (userData) {
         const userData = await authServices.getCurrentUser();
         if (userData) dispatch(login(userData));
-        navigate("/");
+        navigate('/');
       }
     } catch (error) {
       setError(error.message);
@@ -28,16 +28,13 @@ function SignUp() {
 
   return (
     <div className='flex items-center justify-center'>
-      <div
-        className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
+      <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
         <div className='mb-2 flex justify-center'>
           <span className='inline-block w-full max-w-[100px]'>
             <Logo width='100%' />
           </span>
         </div>
-        <h2 className='text-center text-2xl font-bold leading-tight'>
-          Sign up to create account
-        </h2>
+        <h2 className='text-center text-2xl font-bold leading-tight'>Sign up to create account</h2>
         <p className='mt-2 text-center text-base text-black/60'>
           Already have an account?&nbsp;
           <Link
@@ -51,9 +48,9 @@ function SignUp() {
         <form onSubmit={handleSubmit(create)}>
           <div className='space-y-5'>
             <Inputs
-              label='Full Name: '
+              label='Full Name:'
               placeholder='Enter your full name'
-              {...register("name", {
+              {...register('name', {
                 required: true,
               })}
             />
@@ -61,20 +58,20 @@ function SignUp() {
               label='Email: '
               placeholder='Enter your email'
               type='email'
-              {...register("email", {
+              {...register('email', {
                 required: true,
                 validate: {
                   matchPatern: (value) =>
                     /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
-                    "Email address must be a valid address",
+                    'Email address must be a valid address',
                 },
               })}
             />
             <Inputs
               label='Password: '
-              type='password'
+              type='text'
               placeholder='Enter your password'
-              {...register("password", {
+              {...register('password', {
                 required: true,
               })}
             />

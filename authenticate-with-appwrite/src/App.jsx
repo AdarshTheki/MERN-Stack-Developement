@@ -39,7 +39,7 @@ const App = () => {
           </div>
         </div>
       ) : (
-        <h1>Loading...</h1>
+        <h1 className="text-center text-4xl font-bold mt-24">Loading...</h1>
       )}
     </div>
   );

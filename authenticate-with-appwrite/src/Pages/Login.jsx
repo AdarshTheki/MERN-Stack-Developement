@@ -1,25 +1,26 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { login as authLogin } from "../Redux/authSlice";
-import { Button, Inputs, Logo } from "../Components/index";
-import { authServices } from "../AppWrite/Auth";
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { login as authLogin } from '../Redux/authSlice';
+import { Button, Inputs, Logo } from '../Components/index';
+import { authServices } from '../AppWrite/Auth';
 
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   const login = async (data) => {
-    setError("");
+    console.log(data);
+    setError('');
     try {
       const session = await authServices.login(data);
       if (session) {
         const userData = await authServices.getCurrentUser();
         if (userData) dispatch(authLogin(userData));
-        navigate("/");
+        navigate('/');
       }
     } catch (error) {
       setError(error.message);
@@ -28,16 +29,13 @@ function Login() {
 
   return (
     <div className='flex items-center justify-center w-full'>
-      <div
-        className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
+      <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
         <div className='mb-2 flex justify-center'>
           <span className='inline-block w-full max-w-[100px]'>
             <Logo width='100%' />
           </span>
         </div>
-        <h2 className='text-center text-2xl font-bold leading-tight'>
-          Sign in to your account
-        </h2>
+        <h2 className='text-center text-2xl font-bold leading-tight'>Sign in to your account</h2>
         <p className='mt-2 text-center text-base text-black/60'>
           Don&apos;t have any account?&nbsp;
           <Link
@@ -53,20 +51,20 @@ function Login() {
               label='Email: '
               placeholder='Enter your email'
               type='email'
-              {...register("email", {
+              {...register('email', {
                 required: true,
                 validate: {
                   matchPatern: (value) =>
                     /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
-                    "Email address must be a valid address",
+                    'Email address must be a valid address',
                 },
               })}
             />
             <Inputs
               label='Password: '
-              type='password'
+              type='text'
               placeholder='Enter your password'
-              {...register("password", {
+              {...register('password', {
                 required: true,
               })}
             />
