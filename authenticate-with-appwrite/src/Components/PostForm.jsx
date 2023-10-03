@@ -1,39 +1,37 @@
-import React, { useCallback } from "react";
-import { useForm } from "react-hook-form";
-import { Button, Inputs, RTE, Select } from "./index";
-import { Services } from "../AppWrite/Config";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import React, { useCallback } from 'react';
+import { useForm } from 'react-hook-form';
+import { Button, Inputs, RTE, Select } from './index';
+import { Services } from '../AppWrite/Config';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-// This is a Important Components
+// This is a Important Components AddPost
 
 export default function PostForm({ post }) {
-  const { register, handleSubmit, watch, setValue, control, getValues } =
-    useForm({
-      defaultValues: {
-        title: post?.title || "",
-        slug: post?.$id || "",
-        content: post?.content || "",
-        status: post?.status || "active",
-      },
-    });
+  const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
+    defaultValues: {
+      title: post?.title || '',
+      slug: post?.$id || '',
+      content: post?.content || '',
+      status: post?.status || 'active',
+    },
+  });
 
   const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.userData);
 
   const submit = async (data) => {
+    // If post edit then this login Run
     if (post) {
-      const file = data.image[0]
-        ? await Services.uploadFile(data.image[0])
-        : null;
+      const file = data.image[0] ? await Services.uploadFile(data.image[0]) : null;
 
       if (file) {
-        Services.deleteFile(post.images);
+        Services.deleteFile(post?.featuredImage);
       }
 
-      const dbPost = await Services.updatePost(post.$id, {
+      const dbPost = await Services.updatePost(post?.$id, {
         ...data,
-        images: file ? file.$id : undefined,
+        featuredImage: file ? file.$id : undefined,
       });
 
       if (dbPost) {
@@ -43,33 +41,36 @@ export default function PostForm({ post }) {
       const file = await Services.uploadFile(data.image[0]);
       if (file) {
         const fileId = file.$id;
-        data.images = fileId;
+        // data.images = fileId;
         const dbPost = await Services.createPost({
           ...data,
+          featuredImage: fileId,
           userId: userData.$id,
         });
         if (dbPost) {
           navigate(`/post/${dbPost.$id}`);
+        } else {
+          console.log('DB connection failed');
         }
       }
     }
   };
 
   const slugTransform = useCallback((value) => {
-    if (value && typeof value === "string")
+    if (value && typeof value === 'string')
       return value
         .trim()
         .toLowerCase()
-        .replace(/[^a-zA-Z\d\s]+/g, "-")
-        .replace(/\s/g, "-");
+        .replace(/[^a-zA-Z\d\s]+/g, '-')
+        .replace(/\s/g, '-');
 
-    return "";
+    return '';
   }, []);
 
   React.useEffect(() => {
     const subscription = watch((value, { name }) => {
-      if (name === "title") {
-        setValue("slug", slugTransform(value.title), { shouldValidate: true });
+      if (name === 'title') {
+        setValue('slug', slugTransform(value.title), { shouldValidate: true });
       }
     });
 
@@ -83,15 +84,15 @@ export default function PostForm({ post }) {
           label='Title :'
           placeholder='Title'
           className='mb-4'
-          {...register("title", { required: true })}
+          {...register('title', { required: true })}
         />
         <Inputs
           label='Slug :'
           placeholder='Slug'
           className='mb-4'
-          {...register("slug", { required: true })}
+          {...register('slug', { required: true })}
           onInput={(e) => {
-            setValue("slug", slugTransform(e.currentTarget.value), {
+            setValue('slug', slugTransform(e.currentTarget.value), {
               shouldValidate: true,
             });
           }}
@@ -100,37 +101,34 @@ export default function PostForm({ post }) {
           label='Content :'
           name='content'
           control={control}
-          defaultValue={getValues("content")}
+          defaultValue={getValues('content')}
         />
       </div>
       <div className='w-1/3 px-2'>
         <Inputs
           label='Featured Image :'
           type='file'
-          className='mb-4'
+          className='file-input file-input-bordered file-input-primary p-2'
           accept='image/png, image/jpg, image/jpeg, image/gif'
-          {...register("image", { required: !post })}
+          {...register('image', { required: !post })}
         />
         {post && (
           <div className='w-full mb-4'>
             <img
-              src={Services.getFilePreview(post.images)}
-              alt={post.title}
+              src={Services.getFilePreview(post?.featuredImage)}
+              alt={post?.title}
               className='rounded-lg'
             />
           </div>
         )}
         <Select
-          options={["active", "inactive"]}
+          options={['active', 'inactive']}
           label='Status'
-          className='mb-4'
-          {...register("status", { required: true })}
+          className='my-4'
+          {...register('status', { required: true })}
         />
-        <Button
-          type='submit'
-          bgColor={post ? "bg-green-500" : undefined}
-          className='w-full'>
-          {post ? "Update" : "Submit"}
+        <Button type='submit' bgColor={post ? 'bg-green-500' : undefined} className='w-full'>
+          {post ? 'Update' : 'Submit'}
         </Button>
       </div>
     </form>
