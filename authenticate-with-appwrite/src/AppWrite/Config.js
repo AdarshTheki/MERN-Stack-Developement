@@ -1,21 +1,18 @@
-import React from "react";
-import { config } from "../EnvConfig";
-import { Client, ID, Databases, Storage, Query } from "appwrite";
+import { config } from '../EnvConfig';
+import { Client, ID, Databases, Storage, Query } from 'appwrite';
 
-class Service {
+export class Service {
   client = new Client();
   databases;
   bucket;
 
   constructor() {
-    this.client
-      .setEndpoint(config.appWriteUrl)
-      .setProject(config.appWriteProjectId);
+    this.client.setEndpoint(config.appWriteUrl).setProject(config.appWriteProjectId);
     this.databases = new Databases(this.client);
     this.bucket = new Storage(this.client);
   }
 
-  async createPost({ title, content, slug, image, status, userId }) {
+  async createPost({ title, slug, content, featuredImage, status, userId }) {
     try {
       return await this.databases.createDocument(
         config.appWriteDatabaseId,
@@ -24,17 +21,17 @@ class Service {
         {
           title,
           content,
-          image,
+          featuredImage,
           status,
           userId,
         }
       );
     } catch (error) {
-      console.log("AppWrite service :: createPost: ", error.message);
+      console.log('Appwrite serive :: createPost :: error', error);
     }
   }
 
-  async updatePost(slug, { title, content, image, status }) {
+  async updatePost(slug, { title, content, featuredImage, status }) {
     try {
       return await this.databases.updateDocument(
         config.appWriteDatabaseId,
@@ -43,26 +40,24 @@ class Service {
         {
           title,
           content,
-          image,
+          featuredImage,
           status,
         }
       );
     } catch (error) {
-      console.log("AppWrite service :: updatePost: ", error.message);
+      console.log('Appwrite serive :: updatePost :: error', error);
     }
   }
 
   async deletePost(slug) {
     try {
-      await this.databases.deleteDocument(
+      return await this.databases.deleteDocument(
         config.appWriteDatabaseId,
         config.appWriteCollectionId,
         slug
       );
-      return true;
     } catch (error) {
-      console.log("AppWrite service :: deletePost: ", error.message);
-      return false;
+      console.log('Appwrite serive :: deletePost :: error', error);
     }
   }
 
@@ -74,11 +69,11 @@ class Service {
         slug
       );
     } catch (error) {
-      console.log("AppWrite service :: getPost: ", error.message);
+      console.log('Appwrite serive :: getPost :: error', error);
     }
   }
 
-  async getPosts(queries = [Query.equal("status", "active")]) {
+  async getPosts(queries = [Query.equal('status', 'active')]) {
     try {
       return await this.databases.listDocuments(
         config.appWriteDatabaseId,
@@ -86,8 +81,7 @@ class Service {
         queries
       );
     } catch (error) {
-      console.log("AppWrite service :: getPosts: ", error.message);
-      return false;
+      console.log('Appwrite serive :: getPosts :: error', error);
     }
   }
 
@@ -95,33 +89,25 @@ class Service {
 
   async uploadFile(file) {
     try {
-      return await this.bucket.createFile(
-        config.appWriteBucketId,
-        ID.unique(),
-        file
-      );
+      return await this.bucket.createFile(config.appWriteBucketId, ID.unique(), file);
     } catch (error) {
-      console.log("AppWrite service :: uploadFile: ", error.message);
-      return false;
+      console.log('Appwrite serive :: uploadFile :: error', error);
     }
   }
 
   async deleteFile(fileId) {
     try {
-      await this.bucket.deleteFile(config.appWriteBucketId, fileId);
-      return true;
+      return await this.bucket.deleteFile(config.appWriteBucketId, fileId);
     } catch (error) {
-      console.log("AppWrite service :: deleteFile: ", error.message);
-      return false;
+      console.log('Appwrite serive :: deleteFile :: error', error);
     }
   }
 
-  async getFilePreview(fileId) {
+  getFilePreview(fileId) {
     try {
-      return await this.bucket.getFilePreview(config.appWriteBucketId, fileId);
+      return this.bucket.getFilePreview(config.appWriteBucketId, fileId);
     } catch (error) {
-      console.log("AppWrite service :: getFilePreview: ", error.message);
-      return false;
+      console.log('Appwrite serive :: getFilePreview :: error', error);
     }
   }
 }
