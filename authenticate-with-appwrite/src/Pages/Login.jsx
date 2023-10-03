@@ -6,7 +6,8 @@ import { login as authLogin } from '../Redux/authSlice';
 import { Button, Inputs, Logo } from '../Components/index';
 import { authServices } from '../AppWrite/Auth';
 
-function Login() {
+// 23
+export default function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
@@ -28,15 +29,15 @@ function Login() {
   };
 
   return (
-    <div className='flex items-center justify-center w-full'>
-      <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
+    <div className='flex items-center py-10 justify-center w-full'>
+      <div className={`mx-auto w-full max-w-lg bg-base-100 rounded-xl p-10 border border-black/10`}>
         <div className='mb-2 flex justify-center'>
-          <span className='inline-block w-full max-w-[100px]'>
-            <Logo width='100%' />
+          <span className='inline-block'>
+            <Logo />
           </span>
         </div>
         <h2 className='text-center text-2xl font-bold leading-tight'>Sign in to your account</h2>
-        <p className='mt-2 text-center text-base text-black/60'>
+        <p className='mt-2 text-center text-base'>
           Don&apos;t have any account?&nbsp;
           <Link
             to='/signup'
@@ -69,7 +70,7 @@ function Login() {
               })}
             />
             <Button type='submit' className='w-full'>
-              Sign in
+              Login account
             </Button>
           </div>
         </form>
@@ -77,5 +78,3 @@ function Login() {
     </div>
   );
 }
-
-export default Login;

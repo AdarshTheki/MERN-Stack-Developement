@@ -19,7 +19,7 @@ function Home() {
         <Container>
           <div className='flex flex-wrap'>
             <div className='p-2 w-full'>
-              <h1 className='text-2xl font-bold hover:text-gray-500'>
+              <h1 className='text-2xl font-bold text-white capitalize'>
                 Login to read posts
               </h1>
             </div>
@@ -31,12 +31,13 @@ function Home() {
   return (
     <div className='w-full py-8'>
       <Container>
-        <div className='flex flex-wrap'>
-          {posts.map((post) => (
-            <div key={post.$id} className='p-2 w-1/4'>
-              <PostCart {...post} />
-            </div>
-          ))}
+        <div className='grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3'>
+          {posts &&
+            posts.map((post) => (
+              <div key={post.$id} className='p-2 w-full'>
+                <PostCart {...post} />
+              </div>
+            ))}
         </div>
       </Container>
     </div>
