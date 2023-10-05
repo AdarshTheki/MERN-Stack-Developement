@@ -1,6 +1,7 @@
-import { onAuthStateChanged } from "firebase/auth";
-import { useEffect, useState } from "react";
-import { auth } from "../../firebaseConfig";
+import { onAuthStateChanged } from 'firebase/auth';
+import { useEffect, useState } from 'react';
+
+import { auth } from './firebaseConfig';
 
 const useUser = () => {
   const [user, setUser] = useState(null);
@@ -11,9 +12,9 @@ const useUser = () => {
       if (getUser) {
         setUser(getUser);
         setIsLoading(false);
-        console.log("successful in useUser Hooks!");
+        console.log('successful in useUser Hooks!');
       } else {
-        console.log("somethings error in useUser Hooks!");
+        console.log('somethings error in useUser Hooks!');
         setUser(null);
         setIsLoading(false);
       }
