@@ -1,4 +1,4 @@
-import React from 'react';
+import React  from 'react';
 import { useTodo } from '../context';
 
 export default function TodoItem({ todo }) {
@@ -22,12 +22,14 @@ export default function TodoItem({ todo }) {
       }`}>
       <input
         type='checkbox'
+        id={todo.id}
         className='cursor-pointer'
         checked={todo.complete}
         onChange={toggleCompleted}
       />
       <input
         type='text'
+        id={todo.todo}
         className={`border outline-none w-full bg-transparent rounded-lg ${
           isTodoEditable ? 'border-black/10 px-2 font-bold' : 'border-transparent'
         } ${todo.complete ? 'line-through' : ''}`}
