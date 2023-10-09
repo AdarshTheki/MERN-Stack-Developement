@@ -1,6 +1,6 @@
 import React from 'react';
-import AddTodo from './AddTodo';
-import Todos from './Todos';
+import AddTodo from './components/AddTodo';
+import TodoListing from './components/TodoListing';
 
 export default function App() {
   return (
@@ -9,7 +9,7 @@ export default function App() {
       {/* Inputs todo */}
       <AddTodo />
       {/* Listing todos */}
-      <Todos/>
+      <TodoListing />
     </div>
   );
 }
