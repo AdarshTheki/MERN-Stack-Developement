@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import client, { COLLECTION_ID, DATABASE_ID, databases } from '../appwriteConfig';
-import { ID, Query } from 'appwrite';
+import { ID, Query, Role, Permission } from 'appwrite';
 import { Trash2 } from 'react-feather';
 import Header from '../components/Header';
+import { useAuth } from '../utiles/AuthContext';
 
 export default function Room() {
+   const { user } = useAuth();
+
    const [messages, setMessages] = useState([]);
+   const [loading, setLoading] = useState(false);
    const [messageBody, setMessageBody] = useState('');
 
    useEffect(() => {
       getMessage();
+   }, []);
 
+   useEffect(() => {
       const unsubscribe = client.subscribe(
          `databases.${DATABASE_ID}.collections.${COLLECTION_ID}.documents`,
          (res) => {
@@ -25,7 +31,6 @@ export default function Room() {
             }
          }
       );
-
       return () => unsubscribe();
    }, [messages]);
 
@@ -40,18 +45,27 @@ export default function Room() {
    // Add message to database
    const handleSubmit = async (e) => {
       e.preventDefault();
+      setLoading(true);
       let payload = {
+         user_id: user?.$id,
+         username: user?.name,
          body: messageBody,
       };
-      await databases.createDocument(DATABASE_ID, COLLECTION_ID, ID.unique(), payload);
+
+      let permissions = [Permission.write(Role.user(user?.$id))];
+
+      await databases.createDocument(DATABASE_ID, COLLECTION_ID, ID.unique(), payload, permissions);
       setMessageBody('');
+      setLoading(false);
    };
 
    // delete message from database
    const deleteMessage = async (id) => {
-      await databases.deleteDocument(DATABASE_ID, COLLECTION_ID, id);
+      setLoading(true);
+      await databases.deleteDocument(DATABASE_ID, COLLECTION_ID, id).then(() => setLoading(false));
    };
-
+   console.log(user);
+   console.log(messages);
    return (
       <div className='container'>
          <Header />
@@ -74,19 +88,35 @@ export default function Room() {
             </form>
 
             <div className='room--container'>
+               {loading && <p className='loading'> Loading... </p>}
                <div>
                   {messages.map((message) => (
-                     <div key={message.$id} className='message--wrapper'>
+                     <div
+                        key={message.$id}
+                        className={`message--wrapper ${
+                           message?.username === user?.name ? 'start' : 'end'
+                        }`}>
                         <div className='message--header'>
-                           <small className='message-timestamp'>
-                              {new Date(message?.$createdAt).toLocaleString()}
-                           </small>
-                           <Trash2
-                              className='delete--btn'
-                              onClick={() => {
-                                 deleteMessage(message?.$id);
-                              }}
-                           />
+                           <p>
+                              {message?.username === user?.name ? (
+                                 <span style={{ color: '#03C988', fontWeight: 600 }}>
+                                    {user?.name} ●
+                                 </span>
+                              ) : (
+                                 <span>{message?.username}</span>
+                              )}
+                              <small className='message-timestamp'>
+                                 {new Date(message?.$createdAt).toLocaleString()}
+                              </small>
+                           </p>
+                           {message?.$permissions?.includes(`delete(\"user:${user?.$id}\")`) && (
+                              <Trash2
+                                 className='delete--btn'
+                                 onClick={() => {
+                                    deleteMessage(message?.$id);
+                                 }}
+                              />
+                           )}
                         </div>
                         <div className='message--body'>
                            <span>{message.body}</span>

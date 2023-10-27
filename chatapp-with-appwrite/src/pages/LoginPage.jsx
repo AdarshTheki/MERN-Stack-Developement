@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../utiles/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 export default function LoginPage() {
    const { user, handleUserLogin } = useAuth();
@@ -56,6 +56,9 @@ export default function LoginPage() {
                   <input type='submit' value='Login' className='btn btn--lg btn--main' />
                </div>
             </form>
+            <p>
+               Don't have an account ? Register <NavLink to='/register'>HERE</NavLink>
+            </p>
          </div>
       </div>
    );

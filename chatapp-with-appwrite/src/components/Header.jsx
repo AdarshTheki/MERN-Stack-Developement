@@ -8,7 +8,7 @@ export default function Header() {
       <div id='header--wrapper'>
          {user ? (
             <>
-               time: 1:49:00 mins // Welcome, {user?.name}
+               Welcome, {user?.name}
                <LogOut className='header--link' onClick={handleUserLogout} />
             </>
          ) : (

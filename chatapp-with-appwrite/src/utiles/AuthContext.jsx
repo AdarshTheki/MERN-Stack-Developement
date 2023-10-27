@@ -1,11 +1,15 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { account } from '../appwriteConfig';
+import { ID } from 'appwrite';
+import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
    const [loading, setLoading] = useState(true);
    const [user, setUser] = useState(false);
+
+   const navigate = useNavigate();
 
    useEffect(() => {
       getUserOnLoad();
@@ -38,7 +42,33 @@ export const AuthProvider = ({ children }) => {
       setUser(null);
    };
 
-   const contextData = { user, handleUserLogin, handleUserLogout };
+   const handleUserRegister = async (e, credential) => {
+      e.preventDefault();
+      if (credential.password1 !== credential.password2) {
+         alert('Passwords do not match');
+         return;
+      }
+      try {
+         const { email, password1, name } = credential;
+         const response = await account.create(ID.unique(), email, password1, name);
+         console.log(response)
+         if (response) {
+            await account.createEmailSession(email, password1);
+            // verify user
+            // await account
+            //    .createVerification(email)
+            //    .then(() => alert('Verification email sent'))
+            //    .catch(() => alert('Error sending verification email'));
+            const accountDetails = await account.get();
+            setUser(accountDetails);
+            navigate('/');
+         }
+      } catch (error) {
+         console.log('handleUserRegister >> ', error.message);
+      }
+   };
+
+   const contextData = { user, handleUserLogin, handleUserLogout, handleUserRegister };
 
    return (
       <AuthContext.Provider value={contextData}>
