@@ -21,6 +21,11 @@
 
 a {
    color: #40e0d0;
+   font-weight: 600;
+}
+a:hover {
+   color: var(--themeColorMain);
+   text-transform: capitalize;
 }
 
 body {
@@ -51,7 +56,7 @@ body {
 .field--wrapper {
    display: flex;
    flex-direction: column;
-   gap: 1em;
+   /* gap: 1em; */
    padding: 0.5em 0;
 }
 
@@ -71,6 +76,12 @@ textarea {
    outline: none;
    font-size: 18px;
    text-shadow: none !important;
+}
+
+input[type='submit'] {
+   font-weight: 600;
+   font-size: 1em;
+   text-transform: uppercase;
 }
 
 /* Button Styling */
@@ -154,6 +165,7 @@ textarea {
    display: flex;
    justify-content: space-between;
    align-items: center;
+   width: 100%;
 }
 
 .message--body {
@@ -185,4 +197,18 @@ textarea {
 
 .delete--btn:hover {
    color: red;
+}
+
+.loading {
+   text-align: center;
+   font-weight: 600;
+   font-size: 1.3em;
+   color: var(--themeColorMain);
+}
+
+.start {
+   align-items: flex-start;
+}
+.end {
+   align-items: flex-end;
 }
