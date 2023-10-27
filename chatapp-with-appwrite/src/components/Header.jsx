@@ -8,12 +8,14 @@ export default function Header() {
       <div id='header--wrapper'>
          {user ? (
             <>
-               Welcome, {user?.name}
-               <LogOut className='header--link' onClick={handleUserLogout} />
+               <span className='username'>Welcome, {user?.name}</span>
+               <div className='header--link' onClick={handleUserLogout}>
+                  Logout <LogOut />
+               </div>
             </>
          ) : (
             <>
-               <h1>Please Login</h1>
+               <h1>Please Login !</h1>
             </>
          )}
       </div>

@@ -50,15 +50,9 @@ export const AuthProvider = ({ children }) => {
       }
       try {
          const { email, password1, name } = credential;
-         const response = await account.create(ID.unique(), email, password1, name);
-         console.log(response)
-         if (response) {
+         const { $id: userID } = await account.create(ID.unique(), email, password1, name);
+         if (userID) {
             await account.createEmailSession(email, password1);
-            // verify user
-            // await account
-            //    .createVerification(email)
-            //    .then(() => alert('Verification email sent'))
-            //    .catch(() => alert('Error sending verification email'));
             const accountDetails = await account.get();
             setUser(accountDetails);
             navigate('/');
