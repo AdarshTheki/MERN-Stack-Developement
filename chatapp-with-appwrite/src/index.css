@@ -124,6 +124,9 @@ input[type='submit'] {
 }
 
 .header--link {
+   display: flex;
+   align-items: center;
+   gap: 5px;
    color: #c7d8eb;
    cursor: pointer;
    transition: 0.3s;
@@ -211,4 +214,10 @@ input[type='submit'] {
 }
 .end {
    align-items: flex-end;
+}
+
+.username {
+   color: #03C988;
+   font-weight: 600;
+   text-transform: capitalize;
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import client, { COLLECTION_ID, DATABASE_ID, databases } from '../appwriteConfig';
 import { ID, Query, Role, Permission } from 'appwrite';
 import { Trash2 } from 'react-feather';
@@ -10,7 +10,7 @@ export default function Room() {
 
    const [messages, setMessages] = useState([]);
    const [loading, setLoading] = useState(false);
-   const [messageBody, setMessageBody] = useState('');
+   const messageBody = useRef();
 
    useEffect(() => {
       getMessage();
@@ -45,17 +45,18 @@ export default function Room() {
    // Add message to database
    const handleSubmit = async (e) => {
       e.preventDefault();
+      console.log(e.target.value);
       setLoading(true);
       let payload = {
          user_id: user?.$id,
          username: user?.name,
-         body: messageBody,
+         body: messageBody.current.value,
       };
 
       let permissions = [Permission.write(Role.user(user?.$id))];
 
       await databases.createDocument(DATABASE_ID, COLLECTION_ID, ID.unique(), payload, permissions);
-      setMessageBody('');
+      messageBody.current.value = '';
       setLoading(false);
    };
 
@@ -64,10 +65,10 @@ export default function Room() {
       setLoading(true);
       await databases.deleteDocument(DATABASE_ID, COLLECTION_ID, id).then(() => setLoading(false));
    };
-   console.log(user);
-   console.log(messages);
+
    return (
       <div className='container'>
+         {/* Header Section to Display User */}
          <Header />
          <div className='room--container'>
             <form id='message--from' onSubmit={handleSubmit}>
@@ -76,17 +77,13 @@ export default function Room() {
                      required
                      maxLength='1000'
                      placeholder='Say something...'
-                     onChange={(e) => {
-                        setMessageBody(e.target.value);
-                     }}
-                     value={messageBody}></textarea>
+                     ref={messageBody}></textarea>
                </div>
-               {/* time 38 min */}
                <div className='send-btn--wrapper'>
                   <input className='btn btn--secondary' type='submit' value='Send' />
                </div>
             </form>
-
+            {/* Message section to show chats*/}
             <div className='room--container'>
                {loading && <p className='loading'> Loading... </p>}
                <div>
@@ -99,7 +96,7 @@ export default function Room() {
                         <div className='message--header'>
                            <p>
                               {message?.username === user?.name ? (
-                                 <span style={{ color: '#03C988', fontWeight: 600 }}>
+                                 <span className='username'>
                                     {user?.name} ●
                                  </span>
                               ) : (
