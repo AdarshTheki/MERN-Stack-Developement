@@ -35,6 +35,7 @@ export default function LoadMore() {
 
     return (
         <div className='wrapper'>
+            <h2>Load More Data:</h2>
             <div className='load-more'>
                 {products.length
                     ? products.map((product) => (

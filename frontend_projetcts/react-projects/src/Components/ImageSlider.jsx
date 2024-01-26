@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs';
 
-export default function ImageSlider({ url, limit = 5, page = 1 }) {
+const urls = 'https://picsum.photos/v2/list?page=1&limit=5';
+
+export default function ImageSlider() {
     const [images, setImages] = useState([]);
     const [currentSlide, setCurrentSlide] = useState(0);
     const [errMessage, setErrMessage] = useState(null);
@@ -9,7 +11,7 @@ export default function ImageSlider({ url, limit = 5, page = 1 }) {
 
     async function fetchUrl(url) {
         try {
-            const res = await fetch(`${url}?page=${page}&limit=${limit}`);
+            const res = await fetch(url);
             const data = await res.json();
             setImages(data);
         } catch (error) {
@@ -20,8 +22,8 @@ export default function ImageSlider({ url, limit = 5, page = 1 }) {
     }
 
     useEffect(() => {
-        if (url !== '') fetchUrl(url);
-    }, [url]);
+        if (urls !== '') fetchUrl(urls);
+    }, []);
 
     function previousBtn() {
         setCurrentSlide(currentSlide === 0 ? images.length - 1 : currentSlide - 1);
@@ -36,6 +38,7 @@ export default function ImageSlider({ url, limit = 5, page = 1 }) {
 
     return (
         <div className='wrapper'>
+            <h2>Image Slider:</h2>
             <div className='image-slider'>
                 <BsArrowLeftCircleFill className='left arrow' onClick={previousBtn} />
                 <div className='image-container'>

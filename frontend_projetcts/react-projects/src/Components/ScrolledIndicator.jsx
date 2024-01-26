@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-export default function ScrolledIndicator({ url }) {
+const url = 'https://dummyjson.com/products';
+
+export default function ScrolledIndicator() {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
     const [scrollPercentage, setScrollPercentage] = useState(0);
@@ -19,7 +21,7 @@ export default function ScrolledIndicator({ url }) {
 
     useEffect(() => {
         fetchData(url);
-    }, [url]);
+    }, []);
 
     function handleScroll() {
         const scrolledHeight = document.body.scrollTop || document.documentElement.scrollTop;
@@ -37,8 +39,8 @@ export default function ScrolledIndicator({ url }) {
 
     return (
         <div className='wrapper'>
+            <h2>Custom Scroll Indicators:</h2>
             <div className='scroll-position' style={{ width: `${scrollPercentage}%` }}></div>
-            <h2>Custom Scroll Indicators</h2>
             {data && data.length > 0
                 ? data.map((product) => <h4 key={product.id}>{product.title}</h4>)
                 : null}

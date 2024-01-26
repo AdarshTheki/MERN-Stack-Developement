@@ -5,6 +5,7 @@ import { menus } from './tree-views'; // importing a data tree view structure
 export default function TreeViews() {
     return (
         <div className='wrapper'>
+            <h2>Tree view components:</h2>
             <MenuList list={menus} />
         </div>
     );
@@ -26,7 +27,6 @@ function MenuItem({ item }) {
     function toggleChild(child) {
         setCurrentChild({ ...currentChild, [child]: !currentChild[child] });
     }
-    console.log(currentChild);
 
     return (
         <li className='menu-item'>

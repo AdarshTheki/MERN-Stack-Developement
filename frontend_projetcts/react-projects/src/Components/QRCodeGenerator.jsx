@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import QRCode from 'react-qr-code';
 
-export default function QR_CodeGenerator() {
+export default function QRCodeGenerator() {
     const [qrCode, setQrCode] = useState('');
     const [input, setInput] = useState('');
 
@@ -12,13 +12,13 @@ export default function QR_CodeGenerator() {
 
     return (
         <div className='wrapper'>
-            <h2>QR Code Generator</h2>
+            <h2>QR Code Generator:</h2>
             <div>
                 <input
                     onChange={(e) => setInput(e.target.value)}
                     value={input}
                     type='text'
-                    name='qqr-code'
+                    name='qr-code'
                     placeholder='Enter you value here'
                 />
                 <button
