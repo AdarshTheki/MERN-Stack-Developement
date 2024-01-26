@@ -33,19 +33,23 @@ h1 {
     line-height: 1.1;
 }
 
-button {
+button,
+input {
+    margin: 5px 10px;
     border-radius: 8px;
     border: 1px solid transparent;
     padding: 0.6em 1.2em;
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
-    cursor: pointer;
-    transition: border-color 0.25s;
+    text-transform: capitalize;
+    transition: border-color 0.5s ease-in-out;
     border-color: #646cff;
 }
 button:hover {
-    background-color: #1a1a1a;
+    cursor: pointer;
+    border-color: #1a1a1a;
+    background-color: #646cff;
     color: #fff;
 }
 button:focus,
@@ -56,7 +60,7 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
     :root {
         color: #213547;
-        background-color: #ffffff;
+        background-color: #21354752;
     }
     a:hover {
         color: #747bff;
@@ -66,6 +70,9 @@ button:focus-visible {
 .wrapper {
     max-width: 600px;
     margin: 50px auto;
+    padding: 10px;
+    background: #fff;
+    border-radius: 1vmax;
 }
 
 /* Accordion */
@@ -184,4 +191,52 @@ button:focus-visible {
     right: 0;
     top: 0px;
     border: 2px solid #535bf2;
+}
+
+/* Modal Popup */
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: lightgreen;
+}
+.modal-content {
+    position: relative;
+    background: #ddd;
+    margin: auto;
+    padding: 40px;
+    border: 1px solid red;
+    width: 80%;
+}
+.modal .header {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+.modal .header span {
+    font-weight: bold;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* tic-tac-toe */
+.tic-tac-toe {
+    display: flex;
+    flex-direction: column;
+}
+.tic-tac-toe .square {
+    float: left;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 0;
+    border: 0;
+    outline: 1px solid #535bf2;
+    font-size: 1.5rem;
 }
