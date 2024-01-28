@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { menus } from './tree-views'; // importing a data tree view structure
 

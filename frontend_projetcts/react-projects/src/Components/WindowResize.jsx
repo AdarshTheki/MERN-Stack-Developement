@@ -26,9 +26,13 @@ function useWindowResize() {
 
     useLayoutEffect(() => {
         handleResize();
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+        
+        function listenerResize() {
+            handleResize();
+        }
+        
+        window.addEventListener('resize', listenerResize);
+        return () => window.removeEventListener('resize', listenerResize);
     }, []);
 
     return windowSize;
