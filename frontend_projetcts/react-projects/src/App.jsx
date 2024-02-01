@@ -1,8 +1,8 @@
 import React from 'react';
 // import Tooltip from './Components/Tooltip';
 // import DatePicker from './Components/DatePicker';
-import AnimationSpinner from './Components/AnimationSpinner';
-import DragAndDrop from './Components/DragAndDrop';
+// import AnimationSpinner from './Components/AnimationSpinner';
+// import DragAndDrop from './Components/DragAndDrop';
 // import Accordion from './Components/Accordion';
 // import RandomColor from './Components/RandomColor';
 // import StarRating from './Components/StarRating';
@@ -24,12 +24,13 @@ import DragAndDrop from './Components/DragAndDrop';
 // import ScrollToSection from './Components/ScrollToSection';
 // import FeatureFlag from './Components/FeatureFlag';
 // import LocalStorage from './Components/LocalStorage';
-import ErrorBoundary from './Components/ErrorBoundary';
+// import ErrorBoundary from './Components/ErrorBoundary';
+import CharacterCount from './Components/CharacterCount';
 
 export default function App() {
     return (
         <div>
-            <ErrorBoundary/>
+            <CharacterCount />
         </div>
     );
 }
