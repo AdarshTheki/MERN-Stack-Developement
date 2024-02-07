@@ -25,12 +25,14 @@ import React from 'react';
 // import FeatureFlag from './Components/FeatureFlag';
 // import LocalStorage from './Components/LocalStorage';
 // import ErrorBoundary from './Components/ErrorBoundary';
-import CharacterCount from './Components/CharacterCount';
+// import CharacterCount from './Components/CharacterCount';
+// import ProgressiveImage from './Components/ProgressiveImage';
+import TodoList from './TodoList/TodoList';
 
 export default function App() {
     return (
         <div>
-            <CharacterCount />
+            <TodoList />
         </div>
     );
 }

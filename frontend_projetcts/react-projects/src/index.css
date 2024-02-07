@@ -307,10 +307,19 @@ button:focus-visible {
     border: 1px solid #ccc;
     cursor: pointer;
 }
-.drag-and-drop .item:hover{
+.drag-and-drop .item:hover {
     background: #eee;
 }
 
 .item.dragging {
     background: #98b6ec;
+}
+
+/* Progressive Image */
+.loading {
+    filter: blur(20px);
+}
+.loaded {
+    filter: blur(0px);
+    transition: filter 0.5s linear;
 }
