@@ -27,6 +27,7 @@ import React from 'react';
 // import ErrorBoundary from './Components/ErrorBoundary';
 // import CharacterCount from './Components/CharacterCount';
 // import ProgressiveImage from './Components/ProgressiveImage';
+// import Loader from './Components/Loader';
 import TodoList from './TodoList/TodoList';
 
 export default function App() {
