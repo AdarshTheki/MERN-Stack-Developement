@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading files</title>
+  <!-- PreLoading Start -->
+  <!-- scripts required for the current page but not immediately executed. -->
+  <link rel="preload" as="style" href="style1.css">
+  <!-- PreLoading End -->
+
+  <!-- PreFetch Start -->
+  <!-- commonly used for pages that users are likely to visit next.  -->
+  <link rel="Prefetch" href="style2.css">
+  <!-- PreFetch End -->
+  
+  <!-- Preconnect Start -->
+  <link rel="preconnect"  href="script1.js">
+  <!-- Preconnect End -->
+
+  <!-- rel="preload": 
+  Indicates that this link is used for resource preloading. -->
+  
+  <!-- as="...": 
+  Common values include "script", "style", "font", "image", and "fetch". -->
+  
+  <!-- href="...": 
+  Specifies the URL of the resource to preload. -->
+</head>
+<body>
+  
+</body>
+
+</html>

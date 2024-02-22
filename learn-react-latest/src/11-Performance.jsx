@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {data} from './Data'
 
+// Main Components
 function LowerState() {
   const [people, setPeople] = useState(data);
   const [count, setCount] = useState(0);
@@ -13,6 +14,7 @@ function LowerState() {
 }
 export default LowerState;
 
+// Lists - map data 
 const List = ({ people }) => {
   console.log("Pass value")
   return (
@@ -24,6 +26,7 @@ const List = ({ people }) => {
   );
 };
 
+// Item - show data
 const Person = ({ name }) => {
   console.log("render");
   return (

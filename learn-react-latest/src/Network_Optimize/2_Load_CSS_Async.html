@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Load CSS Asynchronously</title>
+
+    <link
+      rel="stylesheet"
+      href="nonCritical.css"
+      media="print"
+      onload="this.media='all'" />
+    <link
+      rel="stylesheet"
+      href="style1.css"
+      media="print"
+      onload="this.media='all'" />
+
+    <!--
+    "all": 
+  The resource applies to all media types (this is the default value if media is not specified).
+  
+    "screen": 
+  The resource is intended for screens, such as computer screens and mobile devices.
+  
+    "print": 
+  The resource is designed for printed media, for example, when a user prints the web page.
+  
+    "speech": 
+  The resource is intended for speech synthesizers, such as screen readers for visually impaired users.   
+-->
+  </head>
+  <body></body>
+</html>
