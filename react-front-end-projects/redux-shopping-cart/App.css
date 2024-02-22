@@ -1,0 +1,199 @@
+/* 
+=======
+Global CSS
+=======
+*/
+button {
+  padding: 1em 2em;
+  border: none;
+  font-weight: 600;
+  border-radius: 100vmax;
+  cursor: pointer;
+}
+
+/* 
+===========
+Auth
+===========
+*/
+.container {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-inline: auto;
+  background-color: rebeccapurple;
+  align-items: center;
+}
+h1 {
+  color: white;
+  font-size: 50px;
+}
+label {
+  font-size: 20px;
+  color: white;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+input {
+  width: 80%;
+  margin: 10px;
+  padding: 10px;
+  font-size: 20px;
+}
+.login-btn {
+  border: none;
+  width: 80%;
+  padding: 10px;
+}
+.login-btn:hover {
+  color: white;
+  background: rgb(18, 20, 26);
+}
+
+/* 
+========
+Cart
+========
+*/
+ul {
+  list-style-type: none;
+}
+li {
+  padding: 10px;
+}
+.cartIcon h3 {
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 10px;
+  cursor: pointer;
+}
+.cart-container {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 20px;
+  height: 400px;
+  padding: 10px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.cartItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  background: #2f3c7e;
+  color: #fbeaeb;
+  box-shadow: 1px 4px 8px 6px #bbb;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.cart-actions {
+  color: white;
+  background: rgb(10, 7, 24);
+}
+.cart-actions:hover {
+  color: rgb(18, 20, 26);
+  background-color: #fbeaeb;
+}
+/* 
+=========
+Header
+=========
+*/
+.header-nav {
+  position: sticky;
+  box-shadow: 0px 10px 20px #ccc;
+  margin-bottom: 10px;
+}
+.header-ul {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+}
+.header-h2 {
+  font-family: monospace;
+  font-size: 30px;
+}
+
+/* 
+========
+Layout
+========
+*/
+.layout {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.total-price {
+  text-align: center;
+  font-size: 20px;
+}
+.orderBtn {
+  color: #fff;
+  background: orangered;
+}
+.orderBtn:hover {
+  background: rgb(168, 47, 2);
+}
+
+/* 
+=========
+Product
+=========
+*/
+.products-container {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: auto;
+}
+.button {
+  margin-top: 25px;
+  margin-bottom: auto;
+  color: white;
+  background-color: rgba(21, 26, 42, 0.787);
+}
+.button:hover{
+  background-color: rgba(60, 69, 95, 0.787);
+}
+.card {
+  width: 250px;
+  /* height: 250px; */
+  border-radius: 1vmax;
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 5px 5px 10px #ccc;
+}
+.card .img {
+  width: 200px;
+}
+.card .img img {
+  width: 100%;
+  aspect-ratio: 5/3;
+}
+.card > p {
+  font-size: 30px;
+}
+.card:hover {
+  box-shadow: 10px 10px 20px #ccc;
+}
