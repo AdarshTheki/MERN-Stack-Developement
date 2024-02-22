@@ -13,26 +13,28 @@ Process Redux used
 */
 
 // store.js
-import {createStore} from 'redux'
+import { createStore } from 'redux';
 
 const initialState = {
-  counter: 0,
+    counter: 0,
 };
 const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "INCREMENT":
-      return {
-        ...state, counter: state + 1
-      };
-    case "DECREMENT":
-      return {
-        ...state, counter: state - 1
-      };
-    default:
-      return state;
-  }
+    switch (action.type) {
+        case 'INCREMENT':
+            return {
+                ...state,
+                counter: state + 1,
+            };
+        case 'DECREMENT':
+            return {
+                ...state,
+                counter: state - 1,
+            };
+        default:
+            return state;
+    }
 };
-export const store = createStore(reducer)
+export const store = createStore(reducer);
 
 // import {store} from './store'
 // ReactDOM.render(
@@ -44,26 +46,25 @@ export const store = createStore(reducer)
 
 // action.js file
 const incNumber = () => {
-  return {
-    type: "INCREMENT",
-  };
+    return {
+        type: 'INCREMENT',
+    };
 };
 const decNumber = () => {
-  return {
-    type: "DECREMENT",
-  };
+    return {
+        type: 'DECREMENT',
+    };
 };
-
 
 // This is App.js
 export default function Redux() {
-  return (
-    <div>
-      <h1>Increment / Decrement</h1>
-      <h3>using React with Redux</h3>
-      <div>
-        <span>Increment</span>value<span>Decrement</span>
-      </div>
-    </div>
-  );
+    return (
+        <div>
+            <h1>Increment / Decrement</h1>
+            <h3>using React with Redux</h3>
+            <div>
+                <span>Increment</span>value<span>Decrement</span>
+            </div>
+        </div>
+    );
 }

@@ -1,6 +1,7 @@
 const ADD_TODO = "ADD_TODO";
 const TODO_TOGGLE = "TODO_TOGGLE";
 
+// create the method to call
 export const addTodo = (text) => ({
   type: ADD_TODO,
   payload: { text, id: nanoid() },
@@ -11,6 +12,7 @@ export const todoToggle = (id) => ({
   payload: { id },
 });
 
+// create reducer function with types
 export const todosReducer = (state = [], action) => {
   switch (action.type) {
     case ADD_TODO:
