@@ -164,13 +164,11 @@ button:focus-visible {
 }
 
 /* Tree Views */
-.menu-item div {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.menu-item {
+    /* list-style: none; */
 }
-.menu-item div span {
-    font-size: 1.5rem;
+.menu-item p {
+    font-size: 1rem;
     cursor: pointer;
 }
 
@@ -239,31 +237,6 @@ button:focus-visible {
     border: 0;
     outline: 1px solid #535bf2;
     font-size: 1.5rem;
-}
-
-/* ToolTip */
-.tooltip-container {
-    position: relative;
-    display: inline-block;
-}
-.tooltip {
-    background: #333;
-    color: #fff;
-    text-align: center;
-    box-shadow: 1px 1px 15px #333;
-    border-radius: 6px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 110%;
-    left: 0;
-    right: 0;
-
-    visibility: hidden;
-}
-
-.tooltip-container:hover .tooltip {
-    visibility: visible;
 }
 
 .spinner-container {
@@ -346,4 +319,182 @@ button:focus-visible {
         stroke-dasharray: 400, 400;
         stroke-dashoffset: -260;
     }
+}
+
+/* pagination */
+.pagination button {
+    padding: 5px 15px;
+    margin: 0 1px;
+}
+
+/* digital-clock */
+.digital-clock .time {
+    font: 2em sans-serif;
+    color: #535bf2;
+}
+.digital-clock .date {
+    font: sans-serif;
+    color: #333;
+    font-weight: 600;
+}
+
+/* step-progressbar */
+.step-progressbar button:disabled {
+    cursor: not-allowed;
+}
+.step-progressbar .steps {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #aaa;
+    padding: 10px;
+    border-radius: 8px;
+}
+.step-progressbar .step {
+    flex-grow: 1;
+    height: 100%;
+    display: flex;
+    font-weight: 600;
+    background-color: #2196f3;
+    padding: 10px;
+    border-radius: 8px;
+    margin-right: 5px;
+}
+.step-progressbar .step.active {
+    background-color: #4caf50;
+    color: #ffffff;
+}
+
+/* ToolTip */
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+    border: 1px solid #aaa;
+}
+.tooltip {
+    font-family: Verdana;
+    background: #000000c9;
+    box-shadow: 1px 5px 10px #333;
+    border-radius: 2px;
+    padding: 5px 15px;
+    position: absolute;
+    z-index: 1;
+    text-align: center;
+    text-transform: capitalize;
+    color: #fff;
+    width: max-content;
+}
+
+/* currency-converter */
+.currency-converter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* filter-cards */
+.filter-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+    gap: 5px;
+}
+.filter-cards div {
+    border: 1px solid #333;
+}
+
+/* music-player */
+.music-player {
+    width: 100%;
+    display: inline-block;
+}
+.music-player .progress-bar {
+    width: 100%;
+    margin: auto;
+    background-color: #ccc;
+    height: 10px;
+    border-radius: 8px;
+}
+.music-player .progress-bar .progress {
+    height: 100%;
+}
+
+/* progress-bar */
+.progress-bar {
+    text-align: center;
+    width: 100%;
+    color: white;
+    background: #aaa;
+    font-weight: 600;
+    border-radius: 8px;
+    /* height: 15px; */
+}
+.progress-bar .bar {
+    height: 100%;
+    border-radius: 8px;
+    background: #4caf50;
+}
+
+/* button-ripple-effect */
+.button-ripple-effect {
+}
+.button-ripple-effect p {
+    width: fit-content;
+    background: #4caf50;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 100vmax;
+    padding: 5px 15px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+.button-ripple-effect p span {
+    width: 30px;
+    height: 20px;
+    position: absolute;
+    background-color: #213547;
+    content: '';
+    display: block;
+    border-radius: 100vmax;
+    animation: 2s ease 1 forwards ripple-effect;
+}
+@keyframes ripple-effect {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(30);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(40);
+        opacity: 0.3;
+    }
+}
+
+/* drag-and-drop-board */
+.drag-and-drop-board {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+.drag-and-drop-board .todo-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    background: #333;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+}
+.work-in-progress,
+.completed {
+    padding: 10px;
+    box-shadow: 1px 0 10px #aaa;
 }
