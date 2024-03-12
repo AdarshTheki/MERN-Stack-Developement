@@ -7,41 +7,36 @@ export default function TreeViews() {
     return (
         <div className='wrapper'>
             <h2>Tree view components:</h2>
-            <MenuList list={menus} />
+            <MenuList lists={menus} />
         </div>
     );
 }
 
-function MenuList({ list = [] }) {
+const MenuList = ({ lists }) => {
     return (
-        <ul className='menu-list'>
-            {list && list.length
-                ? list.map((listItem) => <MenuItem key={listItem.label} item={listItem} />)
-                : null}
+        <ul>
+            {lists.map((menu) => (
+                <MenuItem key={menu.label} item={menu} />
+            ))}
         </ul>
     );
-}
+};
 
-function MenuItem({ item }) {
-    const [currentChild, setCurrentChild] = useState({});
-
-    function toggleChild(child) {
-        setCurrentChild({ ...currentChild, [child]: !currentChild[child] });
-    }
+const MenuItem = ({ item }) => {
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <li className='menu-item'>
-            <div>
-                <p>{item.label}</p>
-                {item && item.children ? (
-                    <span onClick={() => toggleChild(item.label)}>
-                        {currentChild[item.label] ? '-' : '+'}
-                    </span>
-                ) : null}
-            </div>
-            {item && item.children && currentChild[item.label] ? (
-                <MenuList list={item.children} />
-            ) : null}
+            <p onClick={() => setIsOpen(!isOpen)}>
+                {item.children ? item.label : <a href={item.to}>{item.label}</a>}
+            </p>
+            {isOpen && item.children && (
+                <ul>
+                    {item.children.map((child) => (
+                        <MenuItem key={child.label} item={child} />
+                    ))}
+                </ul>
+            )}
         </li>
     );
-}
+};
