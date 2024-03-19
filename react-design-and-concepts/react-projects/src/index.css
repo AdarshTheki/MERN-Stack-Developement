@@ -83,6 +83,21 @@ button:focus-visible {
     border-radius: 1vmax;
     height: auto;
 }
+
+.accordion h3 {
+    cursor: pointer;
+    margin: 0;
+    padding-top: 10px;
+}
+.accordion-content {
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+.accordion.open .accordion-content {
+    max-height: 1000px;
+}
+
 /* star-rating */
 .star-rating {
     display: flex;
@@ -192,33 +207,30 @@ button:focus-visible {
 }
 
 /* Modal Popup */
-.modal {
+.modal-overlay {
     position: fixed;
-    z-index: 1;
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background: lightgreen;
-}
-.modal-content {
-    position: relative;
-    background: #ddd;
-    margin: auto;
-    padding: 40px;
-    border: 1px solid red;
-    width: 80%;
-}
-.modal .header {
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
-    gap: 40px;
+    justify-content: center;
     align-items: center;
 }
-.modal .header span {
-    font-weight: bold;
-    font-size: 1.5rem;
-    cursor: pointer;
+.modal-overlay .modal {
+    position: relative;
+    max-width: 80%;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.modal .close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
 }
 
 /* tic-tac-toe */
@@ -322,9 +334,18 @@ button:focus-visible {
 }
 
 /* pagination */
+.pagination {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
 .pagination button {
     padding: 5px 15px;
     margin: 0 1px;
+    outline: none;
+}
+.pagination .active {
+    background-color: #2196f3;
 }
 
 /* digital-clock */
@@ -339,30 +360,30 @@ button:focus-visible {
 }
 
 /* step-progressbar */
-.step-progressbar button:disabled {
-    cursor: not-allowed;
-}
-.step-progressbar .steps {
+.steps-progress {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    border: 1px solid #aaa;
-    padding: 10px;
-    border-radius: 8px;
+    gap: 20px;
+    margin-bottom: 20px;
 }
-.step-progressbar .step {
-    flex-grow: 1;
-    height: 100%;
-    display: flex;
-    font-weight: 600;
-    background-color: #2196f3;
+.step {
+    flex: 1;
+    text-align: center;
     padding: 10px;
-    border-radius: 8px;
-    margin-right: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
-.step-progressbar .step.active {
-    background-color: #4caf50;
-    color: #ffffff;
+.step-line {
+    height: 10px;
+    background: #28a745;
+}
+.step.active {
+    background-color: #007bff;
+    color: #fff;
+}
+.step.completed {
+    background-color: #28a745;
+    color: #fff;
 }
 
 /* ToolTip */
