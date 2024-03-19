@@ -6,24 +6,24 @@ export default function useFetch(url, options = {}) {
     const [pending, setPending] = useState(true);
     const [error, setError] = useState(null);
 
-    async function fetchData() {
-        try {
-            const res = await fetch(url, { ...options });
-            if (!res.ok) throw new Error(res.statusText);
-
-            const result = await res.json();
-            setData(result);
-            setError(null);
-        } catch (err) {
-            setError(err);
-        } finally {
-            setPending(false);
-        }
-    }
-
     useEffect(() => {
+        async function fetchData() {
+            try {
+                const res = await fetch(url, { ...options });
+                if (!res.ok) throw new Error(res.statusText);
+
+                const result = await res.json();
+                setData(result);
+                setError(null);
+            } catch (err) {
+                setError(err);
+            } finally {
+                setPending(false);
+            }
+        }
+
         fetchData();
-    }, [url]);
+    }, [url, options]);
 
     return { data, pending, error };
 }

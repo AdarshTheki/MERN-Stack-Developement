@@ -11,6 +11,7 @@ export default function FormValidation() {
         email: '',
         password: '',
     });
+    const [show, setShow] = useState(false);
 
     function handleFormChange(event) {
         const { name, value } = event.target;
@@ -23,7 +24,10 @@ export default function FormValidation() {
             case 'username':
                 setError((prevErr) => ({
                     ...prevErr,
-                    username: getValue.length < 3 ? 'Username must be at least 3 characters' : '',
+                    username:
+                        getValue.length < 6
+                            ? `${getValue.length} must be at least 6 characters`
+                            : '',
                 }));
                 break;
             case 'email':
@@ -37,7 +41,10 @@ export default function FormValidation() {
             case 'password':
                 setError((prevErr) => ({
                     ...prevErr,
-                    password: getValue.length < 6 ? 'Password must be at least 6 characters' : '',
+                    password:
+                        getValue.length < 6
+                            ? `${getValue.length} must be at least 6 characters`
+                            : '',
                 }));
                 break;
             default:
@@ -47,6 +54,7 @@ export default function FormValidation() {
 
     function handleSubmit(e) {
         e.preventDefault();
+        setShow(true);
     }
 
     return (
@@ -63,7 +71,7 @@ export default function FormValidation() {
                         placeholder='Enter Your Name'
                         autoComplete='off'
                     />
-                    <span>{error?.username}</span>
+                    {show && <span>{error?.username}</span>}
                 </div>
                 <div>
                     <label>Email</label>
@@ -75,7 +83,7 @@ export default function FormValidation() {
                         placeholder='Enter Your Email'
                         autoComplete='off'
                     />
-                    <span>{error?.email}</span>
+                    {show && <span>{error?.email}</span>}
                 </div>
                 <div>
                     <label>Password</label>
@@ -87,7 +95,7 @@ export default function FormValidation() {
                         placeholder='Enter Your Password'
                         autoComplete='off'
                     />
-                    <span>{error?.password}</span>
+                    {show && <span>{error?.password}</span>}
                 </div>
                 <button>Submit</button>
             </form>

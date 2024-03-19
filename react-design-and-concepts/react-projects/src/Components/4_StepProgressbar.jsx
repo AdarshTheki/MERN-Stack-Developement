@@ -16,18 +16,18 @@ function StepProgressbar({ activeStep, setActiveStep, steps = [] }) {
 
     return (
         <div>
-            <div className='steps'>
-                {steps.length > 0
-                    ? steps.map((item, index) => (
-                          <div
-                              className={`step ${index <= activeStep ? 'active' : ''}`}
-                              style={styles}
-                              key={item}>
-                              {item}
-                          </div>
-                      ))
-                    : null}
+            <div className='steps-progress'>
+                {steps.map((item, index) => (
+                    <div
+                        key={item}
+                        className={`step ${index === activeStep ? 'active' : ''} ${
+                            index < activeStep ? 'completed' : ''
+                        }`}>
+                        {item}
+                    </div>
+                ))}
             </div>
+            <div style={styles} className='step-line'></div>
             <button disabled={activeStep === 0} onClick={handlePreviousStep}>
                 Previous Step
             </button>

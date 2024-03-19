@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 
 function Loader({ strokeWidth = '10px', svgSize = '48px', strokeColor = 'red', text }) {
