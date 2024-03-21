@@ -1,10 +1,10 @@
 import React from 'react';
-import Pagination from './Components/4_StepProgressbar';
+import FeatureFlag from './Components/33_InfinityScrolling';
 
 export default function App() {
     return (
         <div>
-            <Pagination />
+            <FeatureFlag />
         </div>
     );
 }
