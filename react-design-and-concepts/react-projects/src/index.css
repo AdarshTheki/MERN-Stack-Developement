@@ -35,26 +35,23 @@ h1 {
 
 button,
 input {
-    margin: 5px 10px;
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
+    margin: 5px;
+    border-radius: 4px;
+    border: 1px solid;
+    padding: 0.4em 1em;
     font-size: 1em;
     font-weight: 500;
+    color: #222;
     font-family: inherit;
     text-transform: capitalize;
     transition: border-color 0.5s ease-in-out;
     border-color: #646cff;
+    outline: none;
 }
 button:hover {
     cursor: pointer;
-    border-color: #1a1a1a;
     background-color: #646cff;
     color: #fff;
-}
-button:focus,
-button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
 }
 
 @media (prefers-color-scheme: light) {
@@ -393,13 +390,13 @@ button:focus-visible {
     border: 1px solid #aaa;
 }
 .tooltip {
-    font-family: Verdana;
-    background: #000000c9;
-    box-shadow: 1px 5px 10px #333;
-    border-radius: 2px;
+    background: #222;
+    box-shadow: 0px 0px 10px #000;
+    border-radius: 4px;
     padding: 5px 15px;
     position: absolute;
     z-index: 1;
+    font-size: 12px;
     text-align: center;
     text-transform: capitalize;
     color: #fff;
@@ -423,7 +420,7 @@ button:focus-visible {
     border: 1px solid #333;
 }
 
-/* music-player */
+/*! music-player */
 .music-player {
     width: 100%;
     display: inline-block;
@@ -435,11 +432,13 @@ button:focus-visible {
     height: 10px;
     border-radius: 8px;
 }
-.music-player .progress-bar .progress {
-    height: 100%;
+.music-player progress {
+    cursor: pointer;
+    color: #007bff;
+    height: 5px;
 }
 
-/* progress-bar */
+/*! progress-bar */
 .progress-bar {
     text-align: center;
     width: 100%;
@@ -473,7 +472,7 @@ button:focus-visible {
     width: 30px;
     height: 20px;
     position: absolute;
-    background-color: #213547;
+    background-color: #2a612c86;
     content: '';
     display: block;
     border-radius: 100vmax;
@@ -486,11 +485,11 @@ button:focus-visible {
     }
     50% {
         transform: scale(30);
-        opacity: 0.6;
+        opacity: 0.8;
     }
     100% {
-        transform: scale(40);
-        opacity: 0.3;
+        transform: scale(50);
+        opacity: 0.5;
     }
 }
 
@@ -500,7 +499,7 @@ button:focus-visible {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
 }
-.drag-and-drop-board .todo-card {
+.drag-and-drop-board .todo-card, .drag-and-drop-board-card {
     display: flex;
     justify-content: center;
     align-items: center;
