@@ -20,8 +20,7 @@ export default function CurrencyConverter() {
     }, [toCurrency, fromCurrency]);
 
     return (
-        <div className='wrapper'>
-            <h2>Currency Converter</h2>
+        <div>
             <input
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}

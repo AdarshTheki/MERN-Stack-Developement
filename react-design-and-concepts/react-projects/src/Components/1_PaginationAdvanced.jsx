@@ -71,12 +71,10 @@ export default function Test() {
     };
 
     return (
-        <div className='wrapper'>
-            <PaginationAdvanced
-                onChangePage={onChangeHandler}
-                totalPage={100}
-                currentPage={currentPage}
-            />
-        </div>
+        <PaginationAdvanced
+            onChangePage={onChangeHandler}
+            totalPage={100}
+            currentPage={currentPage}
+        />
     );
 }

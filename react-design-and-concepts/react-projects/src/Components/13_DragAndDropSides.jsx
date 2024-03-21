@@ -1,32 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { products } from './dummyData';
 
 function DragAndDropSides() {
-    const [loading, setLoading] = useState(false);
-    const [todos, setTodos] = useState([]);
-
-    async function fetchListOfTodos() {
-        try {
-            setLoading(true);
-            const apiResponse = await fetch('https://dummyjson.com/todos?limit=5&skip=0');
-            const result = await apiResponse.json();
-
-            if (result && result.todos && result.todos.length > 0) {
-                const updatedTodos = result.todos.map((todoItem) => ({
-                    ...todoItem,
-                    status: 'wip',
-                }));
-                setTodos(updatedTodos);
-            }
-        } catch (e) {
-            console.log(e);
-        } finally {
-            setLoading(false);
-        }
-    }
-
-    useEffect(() => {
-        fetchListOfTodos();
-    }, []);
+    const [todos, setTodos] = useState(products.map((item) => ({ ...item, status: 'wip' })));
 
     function handleDragStart(event, id) {
         event.dataTransfer.setData('id', id);
@@ -36,47 +12,45 @@ function DragAndDropSides() {
         event.preventDefault();
     }
 
-    function handleDrop(event, status) {
-        const id = event.dataTransfer.getData('id');
-        const updateTodos = todos.map((todoItem) => {
-            if (todoItem.id.toString() === id) {
-                return { ...todoItem, status: status };
-            }
-            return todoItem;
-        });
-        setTodos(updateTodos);
+    function handleDropSides(event, status) {
+        const draggedId = event.dataTransfer.getData('id');
+        setTodos(
+            todos.map((todoItem) =>
+                todoItem.id == draggedId ? { ...todoItem, status: status } : todoItem
+            )
+        );
     }
 
-    function renderTodos(status) {
+    function render(status) {
         return todos
-            .filter((todo) => todo.status === status)
-            .map((todoItem) => {
+            .slice(0, 10)
+            .filter((t) => t.status === status)
+            .map((item) => (
                 <div
-                    onDragStart={(event) => handleDragStart(event, todoItem.id)}
-                    onDrop={(event) => handleDrop(event, status)}
-                    onDragOver={handleDragOver}
+                    key={item.id}
+                    className='todo-card'
                     draggable
-                    key={todoItem.id}
-                    className='todo-card'>
-                    Verma
-                </div>;
-            });
+                    onDragStart={(event) => handleDragStart(event, item.id)}>
+                    {item.title}
+                </div>
+            ));
     }
-
-    if (loading) return <h1>Loading data! Please wait</h1>;
 
     return (
-        <div className='wrapper'>
-            <h1>Drag and Drop</h1>
-            <div className='drag-and-drop-board'>
-                <div className='work-in-progress'>
-                    <h3>In Progress:</h3>
-                    {renderTodos('wip')}
-                </div>
-                <div className='completed'>
-                    <h3>Completed:</h3>
-                    {renderTodos('completed')}
-                </div>
+        <div className='drag-and-drop-board'>
+            <div
+                className='work-in-progress'
+                onDrop={(e) => handleDropSides(e, 'wip')}
+                onDragOver={handleDragOver}>
+                <h4>In Progress:</h4>
+                {render('wip')}
+            </div>
+            <div
+                className='completed'
+                onDrop={(e) => handleDropSides(e, 'completed')}
+                onDragOver={handleDragOver}>
+                <h4>Completed:</h4>
+                {render('completed')}
             </div>
         </div>
     );

@@ -38,8 +38,7 @@ export default function Test() {
     const toggleModal = () => setIsModalOpen(!isModalOpen);
 
     return (
-        <div className='wrapper'>
-            <h2>Custom Modal Example</h2>
+        <div>
             <button onClick={toggleModal}>Open Modal</button>
             <Modal isOpen={isModalOpen} onClose={toggleModal}>
                 <h2>Modal Title</h2>

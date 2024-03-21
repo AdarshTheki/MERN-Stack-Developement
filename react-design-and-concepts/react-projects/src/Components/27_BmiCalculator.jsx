@@ -21,7 +21,7 @@ export default function BmiCalculator() {
     }
 
     return (
-        <div className='wrapper'>
+        <div>
             <div className='bmi-calculator'>
                 <div>
                     <label>Height (CM) : </label>

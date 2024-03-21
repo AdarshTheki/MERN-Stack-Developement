@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { data } from './accordion-data';
+import { products } from './dummyData';
 
 export default function Accordion() {
     const [selected, setSelected] = useState(null);
@@ -23,34 +23,26 @@ export default function Accordion() {
     }
 
     return (
-        <div className='wrapper'>
-            <h3>Accordion:</h3>
+        <div>
             <button onClick={() => setEnableMultiSelection(!enableMultiSelection)}>
                 {enableMultiSelection ? 'Disable' : 'Enable'} Multiple Selection
             </button>
             <div className='accordion'>
-                {data && data.length > 0 ? (
-                    data.map((dataItem) => (
-                        <div
-                            key={dataItem?.id}
-                            onClick={
-                                enableMultiSelection
-                                    ? () => handleMultipleSelection(dataItem.id)
-                                    : () => handleSingleSelection(dataItem.id)
-                            }
-                            className='item'>
-                            <h3>{dataItem.label} ↓</h3>
-
-                            {enableMultiSelection
-                                ? multiple.indexOf(dataItem.id) !== -1 && (
-                                      <h5>{dataItem.message}</h5>
-                                  )
-                                : selected === dataItem.id && <h5>{dataItem.message}</h5>}
-                        </div>
-                    ))
-                ) : (
-                    <h2>Data not found !</h2>
-                )}
+                {products.slice(0, 5).map((dataItem) => (
+                    <li
+                        key={dataItem?.id}
+                        onClick={
+                            enableMultiSelection
+                                ? () => handleMultipleSelection(dataItem.id)
+                                : () => handleSingleSelection(dataItem.id)
+                        }
+                        className='item'>
+                        {dataItem.title} ↓
+                        {enableMultiSelection
+                            ? multiple.indexOf(dataItem.id) !== -1 && <p>{dataItem.description}</p>
+                            : selected === dataItem.id && <p>{dataItem.description}</p>}
+                    </li>
+                ))}
             </div>
         </div>
     );

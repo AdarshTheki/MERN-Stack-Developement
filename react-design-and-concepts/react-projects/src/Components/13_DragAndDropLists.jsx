@@ -1,74 +1,40 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import { products } from './dummyData';
 
-export default function Test() {
-    const [items, setItems] = useState([
-        {
-            id: 1,
-            name: 'Adarsh Verma',
-            content: 'lorem Create Custom Drag And Drop :Create Custom Drag And Drop :',
-        },
-        {
-            id: 2,
-            name: 'Ayush Mishara',
-            content: 'lorem Create Custom Drag And Drop :Create Custom Drag And Drop :',
-        },
-        {
-            id: 3,
-            name: 'Ravijant Shankya',
-            content: 'lorem Create Custom Drag And Drop :Create Custom Drag And Drop :',
-        },
-        {
-            id: 4,
-            name: 'MIshra Lucky',
-            content: 'lorem Create Custom Drag And Drop :Create Custom Drag And Drop :',
-        },
-    ]);
-    
-    return (
-        <div className='wrapper'>
-            <h2>Create Custom Drag And Drop :</h2>
-            <DragAndDrop items={items} setItems={setItems} />
-        </div>
-    );
-}
+const DragAndDropLists = () => {
+    const [items, setItems] = useState(products);
 
-function DragAndDrop({ items, setItems }) {
-    const [draggedItem, setDraggedItem] = useState(null);
+    const handleDragStart = (e, index) => {
+        e.dataTransfer.setData('index', index.toString());
+    };
 
-    function handleDragStart(event, index) {
-        setDraggedItem(index);
-        event.dataTransfer.effectAllowed = 'move';
-        event.dataTransfer.setData('text/plain', index);
-    }
+    const handleDragOver = (e) => {
+        e.preventDefault();
+    };
 
-    function handleDragOver(index) {
-        if (index === draggedItem) {
-            return;
-        }
+    const handleDragDrop = (e, dropIndex) => {
+        const draggedIndex = parseInt(e.dataTransfer.getData('index'));
         const newItems = [...items];
-        const removeItems = newItems.splice(draggedItem, 1)[0];
-        newItems.splice(index, 0, removeItems);
+        const draggedItem = newItems.splice(draggedIndex, 1)[0];
+        newItems.splice(dropIndex, 0, draggedItem);
         setItems(newItems);
-        setDraggedItem(index);
-    }
+    };
 
     return (
-        <div className='drag-and-drop'>
-            {items?.map((item, index) => (
+        <div>
+            {items.slice(0, 5).map((item, index) => (
                 <div
                     key={item.id}
-                    className={`item ${index === draggedItem ? 'dragging' : ''}`}
+                    className='drag-and-drop-board-card'
                     draggable
                     onDragStart={(e) => handleDragStart(e, index)}
-                    onDragOver={() => handleDragOver(index)}
-                    onDragEnd={() => setDraggedItem(null)}>
-                    <h4>
-                        {item.id}: {item.name}
-                    </h4>
-                    <p>{item.content}</p>
+                    onDragOver={handleDragOver}
+                    onDrop={(e) => handleDragDrop(e, index)}>
+                    {item.title}
                 </div>
             ))}
         </div>
     );
-}
+};
+
+export default DragAndDropLists;

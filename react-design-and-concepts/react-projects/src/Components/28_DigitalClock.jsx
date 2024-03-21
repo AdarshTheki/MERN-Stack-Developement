@@ -12,22 +12,19 @@ export default function DigitalClock() {
     }, []);
 
     return (
-        <div className='wrapper'>
-            <h2>Digital Clock</h2>
-            <div className='digital-clock'>
-                <div className='time'>
-                    <span>{timer.getHours().toString().padEnd(2, '0')} : </span>
-                    <span>{timer.getMinutes().toString().padEnd(2, '0')} : </span>
-                    <span>{timer.getSeconds().toString().padEnd(2, '0')}</span>
-                </div>
-                <div className='date'>
-                    {timer.toLocaleDateString(undefined, {
-                        weekday: 'long',
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                    })}
-                </div>
+        <div className='digital-clock'>
+            <div className='time'>
+                <span>{timer.getHours().toString().padEnd(2, '0')} : </span>
+                <span>{timer.getMinutes().toString().padEnd(2, '0')} : </span>
+                <span>{timer.getSeconds().toString().padEnd(2, '0')}</span>
+            </div>
+            <div className='date'>
+                {timer.toLocaleDateString(undefined, {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                })}
             </div>
         </div>
     );

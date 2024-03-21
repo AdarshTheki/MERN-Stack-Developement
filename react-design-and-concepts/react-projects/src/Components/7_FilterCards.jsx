@@ -23,8 +23,7 @@ export default function FilterCards() {
             : products.filter((item) => item.category === selectCategory);
 
     return (
-        <div className='wrapper'>
-            <h2>Filter cards : </h2>
+        <div>
             <ul>
                 {uniqueCategory.map((category) => (
                     <button key={category} onClick={() => setSelectCategory(category)}>
@@ -32,7 +31,6 @@ export default function FilterCards() {
                     </button>
                 ))}
             </ul>
-            <hr />
             <h3>Total : {filterProducts.length}</h3>
             <ul className='filter-cards'>
                 {filterProducts.length

@@ -6,8 +6,7 @@ export default function WindowResize() {
     const { width, height } = windowSize;
 
     return (
-        <div className='wrapper'>
-            <h2>Window resize Hook</h2>
+        <div>
             <p>Width : {width}</p>
             <p>Height : {height}</p>
         </div>
@@ -26,11 +25,11 @@ function useWindowResize() {
 
     useLayoutEffect(() => {
         handleResize();
-        
+
         function listenerResize() {
             handleResize();
         }
-        
+
         window.addEventListener('resize', listenerResize);
         return () => window.removeEventListener('resize', listenerResize);
     }, []);

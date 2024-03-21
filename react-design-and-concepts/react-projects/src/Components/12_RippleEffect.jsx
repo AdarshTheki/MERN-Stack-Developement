@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-export default function ButtonRippleEffect() {
+export default function RippleEffect() {
     const [isEffect, setIsEffect] = useState(false);
     const [coordinate, setCoordinate] = useState({ x: -1, y: -1 });
 
@@ -26,16 +26,11 @@ export default function ButtonRippleEffect() {
     }, [isEffect]);
 
     return (
-        <div className='wrapper'>
-            <h2>Button Ripple Effect</h2>
-            <div className='button-ripple-effect'>
-                <p onClick={handleRippleEffect}>
-                    {isEffect ? (
-                        <span style={{ left: coordinate.x, top: coordinate.y }}></span>
-                    ) : null}
-                    Click Button to See Ripple Effect
-                </p>
-            </div>
+        <div className='button-ripple-effect'>
+            <p onClick={handleRippleEffect}>
+                {isEffect ? <span style={{ left: coordinate.x, top: coordinate.y }}></span> : null}
+                Click Button to See Ripple Effect
+            </p>
         </div>
     );
 }

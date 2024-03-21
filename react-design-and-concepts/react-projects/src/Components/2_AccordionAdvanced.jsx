@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import { products } from './dummyData';
 
 function Accordion({ title = '', children, isOpen, onToggle }) {
     return (
         <div className={`accordion ${isOpen ? 'open' : ''}`}>
             <h3 onClick={onToggle}>
-                {title} {isOpen ? '▲' : '▼'}
+                {title} {isOpen ? '↑' : '↓'}
             </h3>
             <div className='accordion-content'>{children}</div>
         </div>
@@ -27,7 +28,7 @@ export default function Test() {
     }
 
     const handleExpandAll = () => {
-        setOpenPanels(Array.from({ length: 5 }, (_, index) => index)); // Open all panels
+        setOpenPanels(products.map((item) => item.id)); // Open all panels
     };
 
     const handleCollapseAll = () => {
@@ -35,21 +36,19 @@ export default function Test() {
     };
 
     return (
-        <div className='wrapper'>
+        <div>
             {openPanels.length ? (
                 <button onClick={handleCollapseAll}>Collapse All</button>
             ) : (
                 <button onClick={handleExpandAll}>Expand All</button>
             )}
-            {Array.from({ length: 5 }, (_, index) => (
+            {products.slice(0, 5).map((item) => (
                 <Accordion
-                    key={index}
-                    title={`Hello world ${index + 1}`}
-                    isOpen={openPanels.includes(index)}
-                    onToggle={() => handleToggle(index)}>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis numquam
-                    neque temporibus? Laborum nam molestias illum quidem consequatur eos aliquid
-                    vitae aperiam reprehenderit id aliquam, non ratione maiores ullam ipsa.
+                    key={item.id}
+                    title={item.title}
+                    isOpen={openPanels.includes(item.id)}
+                    onToggle={() => handleToggle(item.id)}>
+                    {item.description}
                 </Accordion>
             ))}
         </div>

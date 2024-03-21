@@ -4,12 +4,7 @@ import { menus } from './tree-views'; // importing a data tree view structure
 
 // Tree view components / menu UI components / recursive navigation menu
 export default function TreeViews() {
-    return (
-        <div className='wrapper'>
-            <h2>Tree view components:</h2>
-            <MenuList lists={menus} />
-        </div>
-    );
+    return <MenuList lists={menus} />;
 }
 
 const MenuList = ({ lists }) => {

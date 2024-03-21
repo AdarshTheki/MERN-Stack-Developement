@@ -1,30 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { products } from './dummyData';
 
 export default function SearchAutoComplete() {
-    const [user, setUser] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [user, setUser] = useState(products.map((i) => i.title));
     const [searchParam, setSearchParam] = useState('');
     const [showDropdown, setShowDropdown] = useState(false);
     const [filterUser, setFilterUser] = useState([]);
-
-    async function fetchUser() {
-        try {
-            const res = await fetch(`https://dummyjson.com/users`);
-            const data = await res.json();
-            if (data && data.users && data.users.length) {
-                setUser(data.users.map((users) => users.firstName));
-            }
-        } catch (error) {
-            setError(error);
-        } finally {
-            setLoading(false);
-        }
-    }
-
-    useEffect(() => {
-        fetchUser();
-    }, []);
 
     function handleChange(event) {
         const query = event.target.value.toLowerCase();
@@ -45,13 +26,8 @@ export default function SearchAutoComplete() {
         setSearchParam(event.target.innerText);
     }
 
-    if (loading) return <h2 className='wrapper'>Loading Data ! please wait...</h2>;
-
-    if (error) return <h2 className='wrapper'>SomeThing was wrang {error}</h2>;
-
     return (
-        <div className='wrapper'>
-            <h2>Search Auto Complete:</h2>
+        <div>
             <input
                 value={searchParam}
                 onChange={handleChange}

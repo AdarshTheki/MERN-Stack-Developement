@@ -37,8 +37,7 @@ export default function ImageSlider() {
     if (errMessage) return <h2 className='wrapper'>SomeThing was Wrong ! , {errMessage}</h2>;
 
     return (
-        <div className='wrapper'>
-            <h2>Image Slider:</h2>
+        <div>
             <div className='image-slider'>
                 <BsArrowLeftCircleFill className='left arrow' onClick={previousBtn} />
                 <div className='image-container'>

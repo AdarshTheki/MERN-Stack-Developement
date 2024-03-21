@@ -11,8 +11,7 @@ export default function QRCodeGenerator() {
     }
 
     return (
-        <div className='wrapper'>
-            <h2>QR Code Generator:</h2>
+        <div>
             <div>
                 <input
                     onChange={(e) => setInput(e.target.value)}

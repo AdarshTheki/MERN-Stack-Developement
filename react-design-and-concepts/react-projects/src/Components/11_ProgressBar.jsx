@@ -14,8 +14,7 @@ export default function ProgressBar() {
     }
 
     return (
-        <div className='wrapper'>
-            <h2>Progress Bar:</h2>
+        <div>
             <div className='progress-bar'>
                 {progressPercent >= 0 && progressPercent <= 100 ? (
                     <div className='bar' style={{ width: `${progressPercent}%` }}>

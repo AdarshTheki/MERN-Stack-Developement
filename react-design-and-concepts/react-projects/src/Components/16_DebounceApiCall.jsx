@@ -4,9 +4,7 @@ import { useState } from 'react';
 export default function DebounceApiCall() {
     const [searchParam, setSearchParam] = useState('');
 
-    const { data, error, pending, debounceValue } = useDebounce(searchParam, 4000);
-
-    console.log(debounceValue);
+    const { data, error, pending } = useDebounce(searchParam, 4000);
 
     return (
         <div className='wrapper'>
@@ -61,5 +59,5 @@ function useDebounce(query, delay = 1000) {
         fetchRecipes();
     }, [debounceValue]);
 
-    return { debounceValue, error, data, pending };
+    return { error, data, pending };
 }

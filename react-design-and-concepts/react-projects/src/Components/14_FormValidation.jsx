@@ -58,47 +58,44 @@ export default function FormValidation() {
     }
 
     return (
-        <div className='wrapper'>
-            <h2>Simple Form Validation</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Name</label>
-                    <input
-                        value={formData.username}
-                        onChange={handleFormChange}
-                        type='text'
-                        name='username'
-                        placeholder='Enter Your Name'
-                        autoComplete='off'
-                    />
-                    {show && <span>{error?.username}</span>}
-                </div>
-                <div>
-                    <label>Email</label>
-                    <input
-                        value={formData.email}
-                        onChange={handleFormChange}
-                        type='email'
-                        name='email'
-                        placeholder='Enter Your Email'
-                        autoComplete='off'
-                    />
-                    {show && <span>{error?.email}</span>}
-                </div>
-                <div>
-                    <label>Password</label>
-                    <input
-                        value={formData.password}
-                        onChange={handleFormChange}
-                        type='password'
-                        name='password'
-                        placeholder='Enter Your Password'
-                        autoComplete='off'
-                    />
-                    {show && <span>{error?.password}</span>}
-                </div>
-                <button>Submit</button>
-            </form>
-        </div>
+        <form onSubmit={handleSubmit}>
+            <div>
+                <label>Name</label>
+                <input
+                    value={formData.username}
+                    onChange={handleFormChange}
+                    type='text'
+                    name='username'
+                    placeholder='Enter Your Name'
+                    autoComplete='off'
+                />
+                {show && <span>{error?.username}</span>}
+            </div>
+            <div>
+                <label>Email</label>
+                <input
+                    value={formData.email}
+                    onChange={handleFormChange}
+                    type='email'
+                    name='email'
+                    placeholder='Enter Your Email'
+                    autoComplete='off'
+                />
+                {show && <span>{error?.email}</span>}
+            </div>
+            <div>
+                <label>Password</label>
+                <input
+                    value={formData.password}
+                    onChange={handleFormChange}
+                    type='password'
+                    name='password'
+                    placeholder='Enter Your Password'
+                    autoComplete='off'
+                />
+                {show && <span>{error?.password}</span>}
+            </div>
+            <button>Submit</button>
+        </form>
     );
 }

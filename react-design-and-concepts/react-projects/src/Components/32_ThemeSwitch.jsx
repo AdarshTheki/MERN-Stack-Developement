@@ -7,12 +7,9 @@ export default function ThemeSwitch() {
         setTheme(theme === 'light' ? 'dark' : 'light');
     }
     return (
-        <div className='wrapper'>
-            <h2>Custom Theme Switch:</h2>
-            <div data-theme={theme}>
-                <h3>Hello World!</h3>
-                <button onClick={handleToggleTheme}>Change {theme} Mode</button>
-            </div>
+        <div data-theme={theme}>
+            <h3>Hello World!</h3>
+            <button onClick={handleToggleTheme}>Change {theme} Mode</button>
         </div>
     );
 }

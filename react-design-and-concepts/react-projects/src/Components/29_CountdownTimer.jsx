@@ -58,10 +58,5 @@ export default function CountdownTimerTest() {
         console.log('Task completed');
     };
 
-    return (
-        <div className='wrapper'>
-            <h2>countdown Timer</h2>
-            <CountdownTimer initialTime={10} onTimeFinish={handleTimeFinish} />
-        </div>
-    );
+    return <CountdownTimer initialTime={10} onTimeFinish={handleTimeFinish} />;
 }

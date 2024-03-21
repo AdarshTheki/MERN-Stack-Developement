@@ -18,7 +18,7 @@ export default function LoadMore() {
             }
         } catch (error) {
             console.log(error);
-        }finally{
+        } finally {
             setLoading(false);
         }
     }
@@ -34,8 +34,7 @@ export default function LoadMore() {
     if (loading) return <h2 className='wrapper'>Loading data! please wait...</h2>;
 
     return (
-        <div className='wrapper'>
-            <h2>Load More Data:</h2>
+        <div>
             <div className='load-more'>
                 {products.length
                     ? products.map((product) => (

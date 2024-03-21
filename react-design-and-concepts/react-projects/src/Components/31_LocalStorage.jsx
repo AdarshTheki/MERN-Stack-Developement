@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 
 export default function LocalStorage() {
     const [value, setValue, removeValue] = useLocalStorage('myKey', 'Adarsh Verma');
-    
+
     return (
-        <div className='wrapper'>
-            <h2>Local Storage Custom Hook :- </h2>
+        <div>
             <p>Storage Value: {value}</p>
             <button onClick={() => setValue('New Value')}>Set Value</button>
             <button onClick={removeValue}>Remove Value</button>

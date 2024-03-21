@@ -60,8 +60,7 @@ export default function TicTacToe() {
         );
     }
     return (
-        <div className='wrapper'>
-            <h2>Tic Tac Toe Game:</h2>
+        <div>
             <div className='tic-tac-toe'>
                 <div className='row'>
                     <Square index={0} />

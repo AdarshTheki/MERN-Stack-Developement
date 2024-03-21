@@ -17,8 +17,6 @@ export default function StarRating({ totalStars = 10 }) {
     }
 
     return (
-        <div className='wrapper'>
-            <h3>Star Rating : </h3>
             <div className='star-rating'>
                 {[...Array(totalStars)].map((_, index) => {
                     index += 1;
@@ -34,6 +32,5 @@ export default function StarRating({ totalStars = 10 }) {
                     );
                 })}
             </div>
-        </div>
     );
 }

@@ -23,7 +23,7 @@ function StepProgressbar({ activeStep, setActiveStep, steps = [] }) {
                         className={`step ${index === activeStep ? 'active' : ''} ${
                             index < activeStep ? 'completed' : ''
                         }`}>
-                        {item}
+                        {item} {index < activeStep ? '✔' : '✘'}
                     </div>
                 ))}
             </div>
@@ -42,14 +42,8 @@ export default function StepProgressbarTest() {
     const [activeStep, setActiveStep] = useState(0);
     const steps = ['step1', 'step2', 'step3', 'step4', 'step5'];
     return (
-        <div className='wrapper'>
-            <div className='step-progressbar'>
-                <StepProgressbar
-                    steps={steps}
-                    activeStep={activeStep}
-                    setActiveStep={setActiveStep}
-                />
-            </div>
+        <div className='step-progressbar'>
+            <StepProgressbar steps={steps} activeStep={activeStep} setActiveStep={setActiveStep} />
         </div>
     );
 }

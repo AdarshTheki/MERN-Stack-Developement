@@ -9,15 +9,16 @@ export default function OnClickOutside() {
     useOutsideClick(ref, () => setShowContent(false));
 
     return (
-        <div className='wrapper'>
-            <h2>Create OnClick OutSide Custom Hook</h2>
+        <div>
             {showContent ? (
                 <p ref={ref}>
                     Please click Outside to close this. Would not close if ou click inside of this
                     content. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta
                     consequuntur quo praesentium! Natus quas iure tenetur, harum possimus explicabo
                     aperiam illo. Consectetur repellat error fugit eaque unde atque beatae dolorum.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem iusto corporis fuga suscipit alias unde cupiditate. Magnam numquam blanditiis, autem quae, et quidem eaque similique officia doloribus earum voluptates hic?
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem iusto
+                    corporis fuga suscipit alias unde cupiditate. Magnam numquam blanditiis, autem
+                    quae, et quidem eaque similique officia doloribus earum voluptates hic?
                 </p>
             ) : (
                 <p onClick={() => setShowContent(true)}>

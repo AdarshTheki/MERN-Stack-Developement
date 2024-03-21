@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import tiny from '../tinyPic.jpg';
+import { products } from './dummyData';
 
 function ProgressiveImage(props) {
     const { src, placeholder } = props;
@@ -18,16 +19,14 @@ function ProgressiveImage(props) {
         return () => (newImage.onload = null);
     }, [src]);
 
-    return <img className={customClass} src={imgSrc} alt='tiny' width='100%' height={250} />;
+    return <img className={customClass} src={imgSrc} loading='lazy' alt='tiny' height={100} />;
 }
 
 export default function Images() {
-    const url =
-        'https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces/4MCKNAc6AbWjEsM2h9Xc29owo4z.jpg';
     return (
-        <div className='wrapper'>
-            {Array.from({ length: 10 }, (_, index) => (
-                <ProgressiveImage src={url} placeholder={tiny} key={index} />
+        <div>
+            {products.slice(0, 9).map((item) => (
+                <ProgressiveImage src={item.images} placeholder={tiny} key={item.id} />
             ))}
         </div>
     );

@@ -1,24 +1,15 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import { products } from './dummyData';
 
 export default function Test() {
     return (
-        <div className='wrapper'>
-            <h2>Custom tooltip :</h2>
-            <Tooltip text={'Hello I m tool tip text!'} position='bottom'>
-                <h2>Hover Me. This is One</h2>
-            </Tooltip>
-            <br />
-            <Tooltip text={'Hello I m tool tip text!'} position='left'>
-                <h2>Hover Me</h2>
-            </Tooltip>
-            <br />
-            <Tooltip text={'I am Here About That. I am Here About That.'}>
-                <h2>Hover second is Three</h2>
-            </Tooltip>
-            <Tooltip text={'I am Here About That'} position='right'>
-                <h2>Hover second is Three</h2>
-            </Tooltip>
+        <div>
+            {products.slice(0, 10).map((item) => (
+                <Tooltip key={item.id} text={item.title} position='bottom'>
+                    <li>{item.description}</li>
+                </Tooltip>
+            ))}
         </div>
     );
 }

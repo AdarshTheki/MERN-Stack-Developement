@@ -29,8 +29,7 @@ function TipCalculator() {
     }
 
     return (
-        <div className='wrapper'>
-            <h2>Tip Calculator</h2>
+        <div>
             <div>
                 <label>Bill Amount:</label>
                 <input
