@@ -1,25 +1,29 @@
 /* eslint-disable react/prop-types */
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import InfinityScrolling from './1_InfinityScrolling';
+import LoadMoreData from './1_LoadMoreData';
 import Pagination from './1_Pagination';
 import PaginationAdvanced from './1_PaginationAdvanced';
 import Accordion from './2_Accordion';
 import AccordionAdvanced from './2_AccordionAdvanced';
 import ModalDialog from './3_ModalDialog';
-import OnClickOutside from './3_OnClickOutside';
 import StepProgressbar from './4_StepProgressbar';
 import Tooltip from './5_Tooltip';
-import LoadMore from './6_LoadMore';
 import FilterAdvanced from './7_FilterAdvanced';
 import FilterCards from './7_FilterCards';
 import ImageSlider from './8_ImageSlider';
+import ImageCarousel from './8_ImageCarousel';
 import MusicPlayer from './9_MusicPlayer';
 import Loader from './10_Loader';
 import ProgressBar from './11_ProgressBar';
+import ProgressBars from './11_ProgressBars';
 import RippleEffect from './12_RippleEffect';
 import DndPackage from './13_DndPackage';
 import DragAndDropLists from './13_DragAndDropLists';
 import DragAndDropSides from './13_DragAndDropSides';
 import FormValidation from './14_FormValidation';
+import ContactForm from './14_ContactForm';
+import LazyImage from './15_LazyImage';
 import ProgressiveImage from './15_ProgressiveImage';
 import DebounceApiCall from './16_DebounceApiCall';
 import ScrolledIndicator from './17_ScrolledIndicator';
@@ -31,6 +35,7 @@ import TabbedContent from './21_TabbedContent';
 import TreeViews from './22_TreeViews';
 import RandomColor from './24_RandomColor';
 import TipCalculator from './25_TipCalculator';
+import MortgageCalculator from './25_MortgageCalculator';
 import TicTacToe from './26_TicTacToe';
 import BmiCalculator from './27_BmiCalculator';
 import DigitalClock from './28_DigitalClock';
@@ -38,31 +43,34 @@ import CountdownTimer from './29_CountdownTimer';
 import QRCodeGenerator from './30_QRCodeGenerator';
 import LocalStorage from './31_LocalStorage';
 import ThemeSwitch from './32_ThemeSwitch';
-import InfinityScrolling from './33_InfinityScrolling';
 import WindowResize from './34_WindowResize';
 import CurrencyConverter from './35_CurrencyConverter';
 
 const dummyData = {
+    showInfinityScrolling: true,
+    showLoadMoreData: true,
     showPagination: true,
     showPaginationAdvanced: true,
     showAccordion: true,
     showAccordionAdvanced: true,
     showModalDialog: true,
-    showOnClickOutside: true,
     showStepProgressbar: true,
     showTooltip: true,
-    showLoadMore: true,
     showFilterAdvanced: true,
     showFilterCards: true,
     showImageSlider: true,
+    showImageCarousel: true,
     showMusicPlayer: true,
     showLoader: true,
     showProgressBar: true,
+    showProgressBars: true,
     showRippleEffect: true,
     showDndPackage: true,
     showDragAndDropLists: true,
     showDragAndDropSides: true,
     showFormValidation: true,
+    showContactForm: true,
+    showLazyImage: true,
     showProgressiveImage: true,
     showDebounceApiCall: true,
     showScrolledIndicator: true,
@@ -74,6 +82,7 @@ const dummyData = {
     showTreeViews: true,
     showRandomColor: true,
     showTipCalculator: true,
+    showMortgageCalculator: true,
     showTicTacToe: true,
     showBmiCalculator: true,
     showDigitalClock: true,
@@ -81,7 +90,6 @@ const dummyData = {
     showQRCodeGenerator: true,
     showLocalStorage: true,
     showThemeSwitch: true,
-    showInfinityScrolling: true,
     showWindowResize: true,
     showCurrencyConverter: true,
 };
@@ -126,6 +134,12 @@ function FeatureFlagComponents() {
     const { loading, enableFlag } = useContext(FeatureFlagContext);
 
     const componentsToRender = [
+        {
+            key: 'showInfinityScrolling',
+            component: <InfinityScrolling />,
+            name: 'InfinityScrolling',
+        },
+        { key: 'showLoadMoreData', component: <LoadMoreData />, name: 'LoadMoreData' },
         { key: 'showPagination', component: <Pagination />, name: 'Pagination' },
         {
             key: 'showPaginationAdvanced',
@@ -138,62 +152,64 @@ function FeatureFlagComponents() {
             component: <AccordionAdvanced />,
             name: 'AccordionAdvanced',
         },
-        { key: 'showModalDialog', component: <ModalDialog />, name: 'Modal Dialog' },
-        { key: 'showOnClickOutside', component: <OnClickOutside />, name: 'OnClick Outside' },
-        { key: 'showStepProgressbar', component: <StepProgressbar />, name: 'Step Progressbar' },
+        { key: 'showModalDialog', component: <ModalDialog />, name: 'ModalDialog' },
+        { key: 'showStepProgressbar', component: <StepProgressbar />, name: 'StepProgressbar' },
         { key: 'showTooltip', component: <Tooltip />, name: 'Tooltip' },
-        { key: 'showLoadMore', component: <LoadMore />, name: 'Load More Data' },
-        { key: 'showFilterAdvanced', component: <FilterAdvanced />, name: 'Filter Advanced' },
-        { key: 'showFilterCards', component: <FilterCards />, name: 'Filter Cards' },
+        { key: 'showFilterAdvanced', component: <FilterAdvanced />, name: 'FilterAdvanced' },
+        { key: 'showFilterCards', component: <FilterCards />, name: 'FilterCards' },
         { key: 'showImageSlider', component: <ImageSlider />, name: 'ImageSlider' },
+        { key: 'showImageCarousel', component: <ImageCarousel />, name: 'ImageCarousel' },
         { key: 'showMusicPlayer', component: <MusicPlayer />, name: 'MusicPlayer' },
         { key: 'showLoader', component: <Loader />, name: 'Loader' },
         { key: 'showProgressBar', component: <ProgressBar />, name: 'ProgressBar' },
-        { key: 'showRippleEffect', component: <RippleEffect />, name: 'Button Ripple Effect' },
+        { key: 'showProgressBars', component: <ProgressBars />, name: 'ProgressBars' },
+        { key: 'showRippleEffect', component: <RippleEffect />, name: 'RippleEffect' },
         { key: 'showDndPackage', component: <DndPackage />, name: 'DndPackage' },
-        { key: 'showDragAndDropLists', component: <DragAndDropLists />, name: 'Drag And Drop Lists' },
-        { key: 'showDragAndDropSides', component: <DragAndDropSides />, name: 'Drag And Drop Sides' },
-        { key: 'showFormValidation', component: <FormValidation />, name: 'Form Validation' },
-        { key: 'showProgressiveImage', component: <ProgressiveImage />, name: 'Progressive Image' },
-        { key: 'showDebounceApiCall', component: <DebounceApiCall />, name: 'Debounce Api Call' },
+        { key: 'showDragAndDropLists', component: <DragAndDropLists />, name: 'DragAndDropLists' },
+        { key: 'showDragAndDropSides', component: <DragAndDropSides />, name: 'DragAndDropSides' },
+        { key: 'showFormValidation', component: <FormValidation />, name: 'FormValidation' },
+        { key: 'showContactForm', component: <ContactForm />, name: 'ContactForm' },
+        { key: 'showLazyImage', component: <LazyImage />, name: 'LazyImage' },
+        { key: 'showProgressiveImage', component: <ProgressiveImage />, name: 'ProgressiveImage' },
+        { key: 'showDebounceApiCall', component: <DebounceApiCall />, name: 'DebounceApiCall' },
         {
             key: 'showScrolledIndicator',
             component: <ScrolledIndicator />,
-            name: 'Scrolled Indicator',
+            name: 'ScrolledIndicator',
         },
         {
             key: 'showScrollToTopBottom',
             component: <ScrollToTopBottom />,
-            name: 'Scroll To Top Bottom',
+            name: 'ScrollToTopBottom',
         },
         { key: 'showScrollToSection', component: <ScrollToSection />, name: 'ScrollToSection' },
         {
             key: 'showSearchAutoComplete',
             component: <SearchAutoComplete />,
-            name: 'Search AutoComplete',
+            name: 'SearchAutoComplete',
         },
-        { key: 'showStarRating', component: <StarRating />, name: 'Star Rating' },
-        { key: 'showTabbedContent', component: <TabbedContent />, name: 'Tabbed Content' },
-        { key: 'showTreeViews', component: <TreeViews />, name: 'Tree Views' },
-        { key: 'showRandomColor', component: <RandomColor />, name: 'Random Color Generator' },
-        { key: 'showTipCalculator', component: <TipCalculator />, name: 'Tip Calculator' },
-        { key: 'showTicTacToe', component: <TicTacToe />, name: 'TicTacToe Game' },
-        { key: 'showBmiCalculator', component: <BmiCalculator />, name: 'Bmi Calculator' },
-        { key: 'showDigitalClock', component: <DigitalClock />, name: 'Digital Clock' },
-        { key: 'showCountdownTimer', component: <CountdownTimer />, name: 'Countdown Timer' },
-        { key: 'showQRCodeGenerator', component: <QRCodeGenerator />, name: 'QR CodeGenerator' },
+        { key: 'showStarRating', component: <StarRating />, name: 'StarRating' },
+        { key: 'showTabbedContent', component: <TabbedContent />, name: 'TabbedContent' },
+        { key: 'showTreeViews', component: <TreeViews />, name: 'TreeViews' },
+        { key: 'showRandomColor', component: <RandomColor />, name: 'RandomColor' },
+        { key: 'showTipCalculator', component: <TipCalculator />, name: 'TipCalculator' },
+        {
+            key: 'showMortgageCalculator',
+            component: <MortgageCalculator />,
+            name: 'MortgageCalculator',
+        },
+        { key: 'showTicTacToe', component: <TicTacToe />, name: 'TicTacToe' },
+        { key: 'showBmiCalculator', component: <BmiCalculator />, name: 'BmiCalculator' },
+        { key: 'showDigitalClock', component: <DigitalClock />, name: 'DigitalClock' },
+        { key: 'showCountdownTimer', component: <CountdownTimer />, name: 'CountdownTimer' },
+        { key: 'showQRCodeGenerator', component: <QRCodeGenerator />, name: 'QRCodeGenerator' },
         { key: 'showLocalStorage', component: <LocalStorage />, name: 'LocalStorage' },
         { key: 'showThemeSwitch', component: <ThemeSwitch />, name: 'ThemeSwitch' },
         { key: 'showWindowResize', component: <WindowResize />, name: 'WindowResize' },
         {
             key: 'showCurrencyConverter',
             component: <CurrencyConverter />,
-            name: 'Currency Converter',
-        },
-        {
-            key: 'showInfinityScrolling',
-            component: <InfinityScrolling />,
-            name: 'Infinity Scrolling',
+            name: 'CurrencyConverter',
         },
     ];
 

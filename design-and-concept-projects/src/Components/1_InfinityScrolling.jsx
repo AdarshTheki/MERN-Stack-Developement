@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
+// Infinity Scrolling : Loading Data on Demand
+
 function InfinityScrolling({ renderListItem, getData, listData = [], query = '' }) {
     const pageNumber = useRef(1);
     const [loading, setLoading] = useState(false);
@@ -62,8 +64,8 @@ export default function Test() {
     }, []);
 
     const renderItem = useCallback(
-        ({ title, category, description, brand }, id, ref) => (
-            <div ref={ref} key={id}>
+        ({ title, category, description, brand, id }, key, ref) => (
+            <div ref={ref} key={key}>
                 <h2>{`${id}. ${title}`}</h2>
                 <p>{`${category}, ${brand}`}</p>
                 <p>{description}</p>
@@ -76,7 +78,11 @@ export default function Test() {
         try {
             if (controllerRef.current) controllerRef.current.abort();
             controllerRef.current = new AbortController();
-            const response = await fetch(`https://dummyjson.com/products?${new URLSearchParams({ limit: query, skip: pageNumber * 20, })}`,
+            const response = await fetch(
+                `https://dummyjson.com/products?${new URLSearchParams({
+                    limit: query,
+                    skip: pageNumber * 20,
+                })}`,
                 { signal: controllerRef.current.signal }
             );
             if (!response.ok) {

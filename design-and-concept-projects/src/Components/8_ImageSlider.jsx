@@ -1,66 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs';
 
-const urls = 'https://picsum.photos/v2/list?page=1&limit=5';
+const images = Array.from({ length: 10 }, (_, index) => ({
+    id: index,
+    name: `item${index}`,
+    url: 'https://images.ctfassets.net/hrltx12pl8hq/a2hkMAaruSQ8haQZ4rBL9/8ff4a6f289b9ca3f4e6474f29793a74a/nature-image-for-website.jpg?fit=fill&w=600&h=400',
+}));
 
 export default function ImageSlider() {
-    const [images, setImages] = useState([]);
     const [currentSlide, setCurrentSlide] = useState(0);
-    const [errMessage, setErrMessage] = useState(null);
-    const [loading, setLoading] = useState(true);
 
-    async function fetchUrl(url) {
-        try {
-            const res = await fetch(url);
-            const data = await res.json();
-            setImages(data);
-        } catch (error) {
-            setErrMessage(error);
-        } finally {
-            setLoading(false);
-        }
-    }
-
-    useEffect(() => {
-        if (urls !== '') fetchUrl(urls);
-    }, []);
-
-    function previousBtn() {
+    const previousBtn = () =>
         setCurrentSlide(currentSlide === 0 ? images.length - 1 : currentSlide - 1);
-    }
-    function nextBtn() {
+
+    const nextBtn = () =>
         setCurrentSlide(currentSlide === images.length - 1 ? 0 : currentSlide + 1);
-    }
-
-    if (loading) return <h2 className='wrapper'>Loading data ! please wait.....</h2>;
-
-    if (errMessage) return <h2 className='wrapper'>SomeThing was Wrong ! , {errMessage}</h2>;
 
     return (
         <div>
             <div className='image-slider'>
                 <BsArrowLeftCircleFill className='left arrow' onClick={previousBtn} />
                 <div className='image-container'>
-                    {images && images.length > 0
-                        ? images.map((imageItem, index) => (
-                              <img
-                                  key={imageItem.id}
-                                  src={imageItem.download_url}
-                                  alt={imageItem?.author}
-                                  width='100%'
-                                  className={currentSlide === index ? 'show' : 'hidden'}
-                              />
-                          ))
-                        : null}
+                    {images.map((image, index) => (
+                        <img
+                            key={image.id}
+                            src={image.url}
+                            alt={image.name}
+                            width='100%'
+                            className={currentSlide === index ? 'show' : 'hidden'}
+                        />
+                    ))}
                 </div>
                 <div className='circles'>
-                    {images && images.length
-                        ? images.map((_, index) => (
-                              <button
-                                  className={currentSlide === index ? 'active' : ''}
-                                  key={index}></button>
-                          ))
-                        : null}
+                    {images.map((_, index) => (
+                        <button
+                            className={currentSlide === index ? 'active' : ''}
+                            key={index}></button>
+                    ))}
                 </div>
                 <BsArrowRightCircleFill className='right arrow' onClick={nextBtn} />
             </div>

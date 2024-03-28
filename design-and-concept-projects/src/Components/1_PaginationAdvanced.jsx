@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 
+// Pagination : Render Data in Pages
+
 function PaginationAdvanced({ currentPage, totalPage, onChangePage }) {
     const renderPageNumbers = () => {
         const pages = [];
