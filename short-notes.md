@@ -15,7 +15,7 @@
     - SEO friendly.
 
 3. What is JSX? \
-   JSX stands for JavascriptXML, Its allow to html code within javascript
+   JSX stands for Javascript XML, Its allow to html code within javascript
 
 4. React handle data flow?\
    It is using one way data flow, where data flow from parent to child.
@@ -60,10 +60,9 @@
     - `componentWillUnmount()`
 
 11. Type of Side effect in react component \
+    The `cleanup function` is an integral part of the useEffect hook in React. It allows us to perform necessary cleanup tasks before a component unmounts. When our code runs and reruns for every render, the useEffect hook ensures that it cleans up after itself using this function.
 
-    - **Effect without Cleanup:** This side effect will be used in useEffect which does not restrict the browser from screen update. It also improves the responsiveness of an application. A few common examples are network requests, Logging, manual DOM mutations, etc.
-
-    - **Effect with Cleanup:** Some of the Hook effects will require the cleanup after updating of DOM is done. For example, if you want to set up an external data source subscription, it requires cleaning up the memory else there might be a problem of memory leak. It is a known fact that React will carry out the cleanup of memory when the unmounting of components happens. But the effects will run for each render() method rather than for any specific method. Thus we can say that, before execution of the effects succeeding time the React will also cleanup effects from the preceding render
+    - **Example:** Data fetching, subscription, manual DOM manipulate & setting up timers
 
 ### State Management:
 
@@ -97,66 +96,48 @@
 23. What are synthetic events in React? \
     It combines the behavior of supported events of different browsers into one API, ensuring that events work identically across all browsers.
 
-### Routing and Navigation:
-
-25. How do you implement routing in React? \
-    Its allow to multiple route in your application and rerender based on the URL \
-    BrowserRouter,Routes, Route, Link
-
-### Forms in React:
-
-28. How do you handle forms in React? \
-    `onChange` event handler to track change in form inputs.
-
-29. Explain the `useRef()` in React forms. \
-    Its access DOM nodes or elements create in the rerender method.
-
 ### Hooks:
 
-32. What are React Hooks? \
-    Hook allow function components to have access to state and other React feature. \
-    Rules of hooks include calling on the top level of our function components \
-    Don't call hook inside loop, condition or nested function \
-    Don't call hook regular javascript function \
+1. What are React Hooks? \
+   They allow functional components to use states and manage side effects.
+   Hooks provide access to state and other React features without writing a class.
+   They simplify state management and lifecycle handling.
 
-33. Explain the `useState` Hook. \
-    It returns an array with two values: the current state and a function to update it.
+2. **useState:** This hook lets you manage component state. You declare a state variable and update it directly.
+3. **useEffect:** Use this hook for handling side effects like API calls, subscriptions, and timers. It runs after rendering and during subsequent re-renders.
+4. **useContext:** Allows components to receive information from distant parents without passing it as props. Useful for themes, localization, etc.
+5. **useRef:** Refs hold information (like DOM nodes) that isn’t used for rendering. Unlike state, updating a ref doesn’t trigger re-rendering.
+6. **useReducer:** Similar to useState, but with more complex state logic. Useful for managing state transitions predictably.
+7. **useMemo:** Cache the result of an expensive calculation to avoid unnecessary re-computation during re-renders.
+8. **useCallback:** Memoizes a function definition. Useful when passing callbacks to optimized child components.
+9. **useLayoutEffect:** Measures layout and fires during screen rerenders.
+10. **useInsertionEffect:** Inserts CSS dynamically before DOM changes.
 
-34. How do you use `useEffect` Hook? \
-    It used to perform side effects in functional components, such as data fetching and DOM manipulation. 
+11. **Redux:**
 
-35. Explain use of `refs` ? \
-    Earlier, refs were only limited to class components but now it can also be accessible in function components through the useRef Hook in React
+    - **How Redux Works:**
+        - **Action:** A user interaction or event triggers an action (e.g., clicking a button).
+        - **Reducer:** Reducers handle actions and update the state accordingly.
+        - **Store:** The updated state is stored in the Redux store.
+        - **Components:** React components read data from the store and re-render when the state changes.
+    - **Why use Redux**
+        - **Centralized State Management**
+        - **Predictable State Update**
+    - **Types:**
+        1. `createSlice`: It generated a reducer, action creators, and action types based on defined slice of your state.
+        2. `configureStore` : It combines your reducers, sets up middleware, and creates the redux store.
+        3. `createAsyncThunk` : It generates action creators for handling asynchronous operations (e.g. API calls)
+        4. `createEntityAdapter` : It simplifies managing Normalized Data (e.g. lists of entities)
+        5. `middleware` : It allows you to handle side effects, asynchronous actions, and more.
 
-    -   Managing focus, media playback, or text section.
-    -   Integrating with DOM libraries by third-party.
-    -   Triggering the imperative animations.
-
-36. Explain `custom` Hooks ? \
-    Custom Hooks will allow you for avoiding multiple layers of abstraction or wrapper hell that might come along with Render Props and HoCs
-
-37. Explain the `useContext` Hook. \
-    Context API allows data to be passed through a component tree without having to pass props manually at every level. This makes it easier to share data between components.
-
-38. Redux:
-
-    -   Redux is predictable state container for javascript application.
-    -   Redux three core Principle:
-
-        -   single source of truth
-        -   state is read-only
-        -   changes are made with pure function (reducers)
-
-    -   Redux Thunk : Redux Thunk is `middleware` for redux that allow you to write asynchronous logic action creator.
-
-39. Additional Hooks:
-    -   userReducer()
-    -   useMemo()
-    -   useCallback()
-    -   useLayoutEffect()
-    -   useRef()
-    -   useImperativeHandle()
-    -   useDebugValue()
+12. Additional Hooks:
+    - userReducer()
+    - useMemo()
+    - useCallback()
+    - useLayoutEffect()
+    - useRef()
+    - useImperativeHandle()
+    - useDebugValue()
 
 ### Optimization and Performance:
 
@@ -164,7 +145,7 @@
     -   Techniques like code splitting,
     -   Memorization `useMemo()` : Memorization is form of cashing where the return value of the function is cashed based on its parameters, Its CPU-Expensive functions.
     -   `React.PureComponent` : to reduce the re-renders of a component unnecessarily.
-    -   Maintaining State colocation
+    -   Maintaining State coloration
     -   lazy loading
 
 ### Server-Side Rendering (SSR) and Next.js:
@@ -200,7 +181,7 @@
     1. External Style Sheet: <link rel="stylesheet" type="text/css" href="mystyles.css" />
     2. Embed CSS with a style tag: <style type="text/css"></style>
     3. Add inline styles to HTML elements: <h2 style="color:red;background:black">Inline Style</h2>
-    4. Import a stylesheet file: @import "path/to/style.css";
+    4. Import a stylesheet file: `@import "path/to/style.css";`
 
 5. Types of Selectors:
 
@@ -224,3 +205,29 @@
     data-srcset="image-to-lazy-load-2x.jpg 2x, image-to-lazy-load-1x.jpg 1x"
     alt="I'm an image!" />
 ```
+
+Sure, here are some resources where you can find interview questions for frontend developers focusing on React and JavaScript:
+
+1. [GeeksforGeeks](^1^) provides a list of over 50 React interview questions covering everything from basic to advanced React concepts such as Virtual DOM, Components, State and Props, JSX, Hooks, Routing, and more.
+
+2. [Edureka](^2^) offers a list of over 100 React interview questions. The questions are categorized into General React Interview Questions, React Component Interview Questions, React Redux Interview Questions, and React Router Interview Questions.
+
+For JavaScript specific questions:
+
+1. [Built In](^5^) provides a list of top 50 JavaScript interview questions with example answers. The questions cover a wide range of topics from basic JavaScript concepts to more advanced topics.
+
+2. [InterviewBit](^6^) has a list of frontend developer interview questions that cover JavaScript and other frontend technologies.
+
+3. [DEV Community](^8^) has compiled 52 frontend interview questions in JavaScript.
+
+## Please note that the actual number of questions may vary, and I recommend going through these resources for comprehensive preparation. Good luck with your interview preparation!
+
+1. Top 50+ React Interview Questions and Answers (2024) - GeeksforGeeks. https://www.geeksforgeeks.org/react-interview-questions/.
+2. Top 100+ React Interview Questions and Answers in 2024 - Edureka. https://www.edureka.co/blog/interview-questions/react-interview-questions/.
+3. Top 50 JavaScript Interview Questions With Example Answers. https://builtin.com/software-engineering-perspectives/javascript-interview-questions.
+4. Top Front End Developer Interview Questions (2024) - InterviewBit. https://www.interviewbit.com/front-end-developer-interview-questions/.
+5. 52 Frontend Interview Questions - JavaScript - DEV Community. https://dev.to/m_midas/52-frontend-interview-questions-javascript-59h6.
+6. Top Frontend Developer Interview Questions and Answers (2024). https://www.geeksforgeeks.org/front-end-developer-interview-questions/.
+7. Top 100 React JS Interview Questions and Answers | Flexiple. https://flexiple.com/react/interview-questions.
+8. Front End Interview JavaScript Questions — How to Prepare. https://www.greatfrontend.com/front-end-interview-guidebook/javascript.
+9. 50 Frontend Interview Questions - JavaScript - DEV Community. https://dev.to/mahmoudomaibnelkhattab/49-frontend-interview-questions-javascript-5ffc.
