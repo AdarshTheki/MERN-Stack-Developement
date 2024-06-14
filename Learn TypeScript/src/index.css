@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    padding: 20px 0;
+}
+.container {
+    max-width: 400px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    gap: 10px;
+}
+.container > * {
+    width: 100%;
+    background: rgb(235, 230, 230);
+    padding: 4px;
+    break-after: 10px;
+}
