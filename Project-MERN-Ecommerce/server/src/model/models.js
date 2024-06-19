@@ -1,6 +1,4 @@
 import mongoose, { Schema } from "mongoose";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 
 const userSchema = new Schema({
     name: { type: String, required: [true, "Please enter an name"] },
@@ -18,24 +16,6 @@ const userSchema = new Schema({
     register_date: { type: Date, default: Date.now },
 });
 
-userSchema.pre("save", async function (next) {
-    if (!this.isModified("password")) return next();
-
-    this.password = await bcrypt.hash(this.password, 10);
-});
-
-userSchema.methods.isPasswordCorrect = async function (password) {
-    return await bcrypt.compare(password, this.password);
-};
-
-userSchema.methods.generateAccessToken = async function () {
-    return jwt.sign(
-        { _id: this._id, email: this.email, name: this.name },
-        process.env.ACCESS_TOKEN_SECRET,
-        { expiresIn: "2d" }
-    );
-};
-
 const itemSchema = new Schema({
     title: { type: String, required: [true, "Please enter an title"] },
     description: {
@@ -48,30 +28,20 @@ const itemSchema = new Schema({
 });
 
 const cartSchema = new Schema({
-    userId: { type: String },
+    userId: { type: Schema.Types.ObjectId, ref: "User" },
     items: [
         {
-            productId: String,
-            name: String,
-            price: Number,
-            quantity: {
-                type: Number,
-                required: true,
-                min: [1, "Quantity can not be less then 1"],
-                default: 1,
-            },
+            productId: { type: Schema.Types.ObjectId, ref: "Item" },
+            quantity: Number,
         },
     ],
-    bill: { type: Number, required: true, default: 0 },
 });
 
 const orderSchema = new Schema({
-    userId: { type: String },
+    userId: { type: Schema.Types.ObjectId, ref: "User" },
     items: [
         {
-            productId: String,
-            name: String,
-            price: Number,
+            productId: { type: Schema.Types.ObjectId, ref: "Item" },
             quantity: {
                 type: Number,
                 required: true,
