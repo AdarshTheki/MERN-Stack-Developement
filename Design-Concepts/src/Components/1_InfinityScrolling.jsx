@@ -99,9 +99,9 @@ export default function Test() {
 
     return (
         <div className='wrapper'>
-            <label htmlFor='queryText'>
+            <label>
                 Limit Set:
-                <input id='queryText' type='text' value={query} onChange={handleInput} />
+                <input type='text' value={query} onChange={handleInput} />
             </label>
             <InfinityScrolling
                 renderListItem={renderItem}

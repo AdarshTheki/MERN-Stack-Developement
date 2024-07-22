@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { products } from './dummyData';
+import styled from 'styled-components';
 
 export default function Accordion() {
     const [selected, setSelected] = useState(null);
@@ -23,7 +24,7 @@ export default function Accordion() {
     }
 
     return (
-        <div>
+        <Container>
             <button onClick={() => setEnableMultiSelection(!enableMultiSelection)}>
                 {enableMultiSelection ? 'Disable' : 'Enable'} Multiple Selection
             </button>
@@ -44,6 +45,16 @@ export default function Accordion() {
                     </li>
                 ))}
             </div>
-        </div>
+        </Container>
     );
 }
+
+const Container = styled.div`
+    .item {
+        border: 1px solid #333;
+        margin-bottom: 10px;
+        padding: 5px 30px;
+        border-radius: 1vmax;
+        height: auto;
+    }
+`;

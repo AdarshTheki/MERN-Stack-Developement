@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { products } from './dummyData';
+import styled from 'styled-components';
 
 function Accordion({ title = '', children, isOpen, onToggle }) {
     return (
@@ -36,7 +37,7 @@ export default function Test() {
     };
 
     return (
-        <div>
+        <Container>
             {openPanels.length ? (
                 <button onClick={handleCollapseAll}>Collapse All</button>
             ) : (
@@ -51,6 +52,22 @@ export default function Test() {
                     {item.description}
                 </Accordion>
             ))}
-        </div>
+        </Container>
     );
 }
+
+const Container = styled.div`
+    .accordion h3 {
+        cursor: pointer;
+        margin: 0;
+        padding-top: 10px;
+    }
+    .accordion-content {
+        max-height: 0px;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+    .accordion.open .accordion-content {
+        max-height: 1000px;
+    }
+`;

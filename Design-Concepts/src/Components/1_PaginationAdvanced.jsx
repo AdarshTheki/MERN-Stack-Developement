@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-
-// Pagination : Render Data in Pages
+import styled from 'styled-components';
 
 function PaginationAdvanced({ currentPage, totalPage, onChangePage }) {
     const renderPageNumbers = () => {
         const pages = [];
-        const totalPagesToShow = 5;
+        const totalPagesToShow = 3;
         const halfTotalPagesToShow = Math.floor(totalPagesToShow / 2);
         let startPage = Math.max(1, currentPage - halfTotalPagesToShow);
         let endPage = Math.min(totalPage, startPage + totalPagesToShow - 1);
@@ -73,10 +72,20 @@ export default function Test() {
     };
 
     return (
-        <PaginationAdvanced
-            onChangePage={onChangeHandler}
-            totalPage={100}
-            currentPage={currentPage}
-        />
+        <Container>
+            <PaginationAdvanced
+                onChangePage={onChangeHandler}
+                totalPage={100}
+                currentPage={currentPage}
+            />
+        </Container>
     );
 }
+
+const Container = styled.div`
+    .pagination {
+        .active {
+            background: lightblue;
+        }
+    }
+`;
