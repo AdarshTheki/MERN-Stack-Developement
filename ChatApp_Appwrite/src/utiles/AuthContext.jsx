@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { account } from '../appwriteConfig';
+import { account } from '../constant';
 import { ID } from 'appwrite';
 import { useNavigate } from 'react-router-dom';
 

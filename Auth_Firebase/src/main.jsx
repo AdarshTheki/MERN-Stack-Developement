@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import HomePage from './HomePage';
-import CreateAccount from './CreateAccount';
-import LogInPage from './LogInPage';
+import HomePage from './Component/HomePage';
+import CreateAccount from './Component/CreateAccount';
+import LogInPage from './Component/LogInPage';
 import './index.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
