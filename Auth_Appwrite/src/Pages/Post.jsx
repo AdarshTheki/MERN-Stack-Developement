@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import parse from 'html-react-parser';
 import { useSelector } from 'react-redux';
-import { Services } from '../AppWrite/Config';
+import { Services } from '../AppWrite/Services';
 import { Button, Container } from '../Components/index';
 import blur from '../assets/blur.jpg';
 

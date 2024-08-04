@@ -1,54 +1,28 @@
-## Appwrite backend used with create the globally Blog Post Todo Lists:
+### Appwrite Authentication and CRUD Operations
 
-### Setup Instructions
+This project demonstrates how to use Appwrite for authentication and CRUD (Create, Read, Update, Delete) operations. It includes examples for signing up, logging in, and managing user sessions, as well as performing CRUD operations on a collection.
 
-1.  Clone the Project
+### Directory Structure
 
-```
-  git clone https://github.com/AdarshTheki/lms-frontend.git
-```
+-   **auth:** Authentication examples
+    -   **signup.js:** Sign up example
+    -   **login.js:** Log in example
+    -   **session.js:** Session management example
+-   **crud:** CRUD operations examples
+    -   **create.js:** Create document example
+    -   **read.js:** Read document example
+    -   **update.js:** Update document example
+    -   **delete.js:** Delete document example
 
-2. Move to the directory
+### Appwrite Setup
 
-```
-  cd lms-frontend/
-```
+1. Create an Appwrite account and project
+2. Install the Appwrite SDK: `npm install appwrite`
+3. Configure Appwrite in `appwrite-config.js`
 
-3. Install dependencies
+### Getting Started
 
-```
-  npm install
-```
-
-4. Run the server
-
-```
-  npm run dev
-```
-### Adding plugin and dependencies
-``` 
-    react-router-dom appwrite @tinymce/tinymce-react react-hook-form html-react-parser  @reduxjs/toolkit react-redux
-```
-
-### How to setup tailwind in your Project Link
-```
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
-
-content: [
-    "./index.html", "./src/**/*.{js,ts,jsx,tsx}",
-  ],
-```
-
-### Add daisyUI as a Tailwind CSS plugin
-1. Add daisyUI to your tailwind.config.js files:
-```
-  plugins: [require("daisyui")],
-  daisyui: {
-    themes: ["light", "dark", "night"],
-  },
-```
-2. Use in index.html file Add Attributes to data-theme in html tag:
-```
-  <html data-theme="dark"></html>
-```
+1. Clone the repository: `git clone `
+2. Install dependencies: `npm install`
+3. Configure Appwrite: `Update appwrite-config.js` with your Appwrite credentials
+4. Run examples: Use the commands listed above to run authentication and CRUD operation examples
