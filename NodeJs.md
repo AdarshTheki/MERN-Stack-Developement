@@ -38,8 +38,6 @@ fs.open('example2.txt', 'w', (err, file) => {
 });
 ```
 
----
-
 -   **url (URLs Module)**:
     It provides functionality for working with URLs
 
@@ -54,8 +52,6 @@ console.log(parsedUrl.search); // '?year=2017&month=february'
 console.log(parsedUrl.query); // { year: '2017', month: 'february' }
 console.log(parsedUrl.query.month); // 'february'
 ```
-
----
 
 -   **path (Path Module)**
     provides utilities for working with file and directory paths
@@ -78,8 +74,6 @@ const normalizedPath = path.normalize('/Users/../Refsnes/demo_path.js');
 console.log(normalizedPath); // Output: '/Refsnes/demo_path.js'
 ```
 
----
-
 -   **event (Event Module)**:
     It allows you to create, fire, and listen for custom events.
 
@@ -99,8 +93,6 @@ eventEmitter.on('scream', myEventHandler);
 // Fire the 'scream' event
 eventEmitter.emit('scream');
 ```
-
----
 
 -   **util (utils module):**
     It provides utility functions that are helpful for various tasks.
@@ -125,8 +117,6 @@ const myObject = { name: 'John', age: 30 };
 console.log(util.inspect(myObject));
 ```
 
----
-
 -   **crypto (crypto module):**
     It provides essential cryptographic functionalities for securing data.
 
@@ -140,8 +130,6 @@ console.log('Hashed password:', hash);
 const randomToken = crypto.randomBytes(16).toString('hex');
 console.log('Random token:', randomToken);
 ```
-
----
 
 -   **querystring module:**
     It provides utilities for parsing and formatting URL query strings.
@@ -183,7 +171,11 @@ server.listen(PORT, hostname, () => {
 });
 ```
 
----
+-   **Stream in Nodejs**
+
+Node.js streams break data into smaller chunks for efficient processing, ideal for tasks like file operations and data transformations.
+
+The four main types of Node.js streams are `Readable`, `Writable`, `Duplex`, and `Transform`, each serving a specific purpose in data processing.
 
 ### Middleware:
 
@@ -231,35 +223,3 @@ const authenticate = (req, res, next) => {
 // Generate JWT during login
 const token = jwt.sign({ myObject }, secretKey, { expiresIn: '1h' });
 ```
-
-### Generate token to attach function with in Schemas:
-
-```js
-// Pre-save middleware to hash the password before saving it to the database
-userSchema.pre('save', async function (next) {
-    if (!this.isModified('password')) return next();
-    this.password = await bcrypt.hash(this.password, 10);
-    next();
-});
-
-// Method to compare the provided password with the stored hashed password
-userSchema.methods.isPasswordCorrect = async function (password) {
-    return await bcrypt.compare(password, this.password);
-};
-
-// Method to generate an access token on short time for the user
-userSchema.methods.generateAccessToken = function () {
-    return jwt.sign({ useData }, accessToken, { expiresIn: '1h' });
-};
-
-// Method to generate a refresh token on long time for the user
-userSchema.methods.generateRefreshToken = function () {
-    return jwt.sign({ _id: this._id }, REFRESH_TOKEN, { expiresIn: '1h' });
-};
-```
-
-### stream in Nodejs
-
-Node.js streams break data into smaller chunks for efficient processing, ideal for tasks like file operations and data transformations.
-
-The four main types of Node.js streams are `Readable`, `Writable`, `Duplex`, and `Transform`, each serving a specific purpose in data processing.
