@@ -1,21 +1,24 @@
 1. **What is MongoDB?**
 
-    - MongoDB is a NoSQL, document-oriented database that stores data in flexible, JSON-like documents, making it easy to work with and scale.
-    - Advantages of MongoDB include schema flexibility, horizontal scalability, high availability, and support for rich, dynamic queries.
+    - **Define**: MongoDB is a NoSQL database that stores data in JSON-like documents, flexible, scalable & making it easy to work.
+    - **Advantages**: Schema flexibility, horizontal scalability, high availability, and dynamic queries.
 
-2. **what is `document` & `collection` in MongoDB?**
+2. **what is Document & Collection in MongoDB?**
 
     - **Document:** A document is a set of key-value pairs, similar to a JSON object. Documents are the basic unit of data in MongoDB and are stored in collections.
     - **Collections:** A collection is a group of MongoDB documents, similar to a table in relational databases. Collections do not enforce a schema, allowing documents within them to have different structures.
 
-3. **Explain the concept of `sharding` and `replication` in MongoDB.**
+3. **Explain the concept of Sharding and Replication` in MongoDB.**
 
-    - **Sharding**: Sharding is a method used to distribute data across multiple servers or clusters to ensure horizontal scalability. It allows MongoDB to handle large datasets by dividing them into smaller, more manageable pieces called shards.
-    - **Replication**: Replica sets are a group of MongoDB servers that maintain the same data set, providing redundancy and high availability. Sharded clusters distribute data across multiple replica sets.
+    In MongoDB, sharding and replication are both ways to distribute data across multiple servers
 
-4. **Explain the concept of MongoDB `change streams`**
+    - **Sharding**: Split your data into pieces (shards), and each pieces is stored on different server.
 
-    - Change streams provide real-time notifications of changes to documents in a collection, database, or deployment. They enable applications to react to data changes as they occur, which is useful for building real-time applications.
+    - **Replication**: One server (primary) holds the original data, and other servers (secondaries) keep copies. If the primary fails, one of the secondaries can take over.
+
+4. **Explain the concept of mongoDB Change Streams**
+
+    - `Change streams` provide real-time notifications of changes to documents in a collection, database, or deployment. They enable applications to react to data changes as they occur, which is useful for building real-time applications.
 
 5. **Pre-save middleware to hash the password before saving it to the database**
 
@@ -110,21 +113,21 @@ db.locations.find({
 
 ### Querying with Operators
 
-1. **Comparison Operators**
+-   **Comparison Operators**
 
-    - `$eq`: Matches values that are equal to a specified value.
-    - `$ne`: Matches all values that are not equal to a specified value.
-    - `$gt`, $gte: Matches values that are greater than (or equal to) a specified value.
-    - `$lt`, $lte: Matches values that are less than (or equal to) a specified value.
-    - `$in`: Matches any of the values specified in an array.
-    - `$nin`: Matches none of the values specified in an array.
+    -   `$eq`: Matches values that are equal to a specified value.
+    -   `$ne`: Matches all values that are not equal to a specified value.
+    -   `$gt`, $gte: Matches values that are greater than (or equal to) a specified value.
+    -   `$lt`, $lte: Matches values that are less than (or equal to) a specified value.
+    -   `$in`: Matches any of the values specified in an array.
+    -   `$nin`: Matches none of the values specified in an array.
 
-2. **Logical Query Operators**
+-   **Logical Query Operators**
 
-    - `$or`: Joins query clauses with a logical OR, returning all documents that match the conditions.
-    - `$and`: Joins query clauses with a logical AND, returning all documents that match all conditions.
-    - `$not`: Inverts the effect of a query expression.
-    - `$nor`: Joins query clauses with a logical NOR, returning all documents that fail to match both conditions.
+    -   `$or`: Joins query clauses with a logical OR, returning all documents that match the conditions.
+    -   `$and`: Joins query clauses with a logical AND, returning all documents that match all conditions.
+    -   `$not`: Inverts the effect of a query expression.
+    -   `$nor`: Joins query clauses with a logical NOR, returning all documents that fail to match both conditions.
 
 3. **Aggregation Pipeline Stages**
 
@@ -201,7 +204,7 @@ const userSchema = new mongoose.Schema({
 export const User = mongoose.model('User', userSchema);
 ```
 
-### Types of Relationships
+### Types of Relationships:
 
 1.  **One-to-One**: A user has one profile.
 
@@ -231,7 +234,7 @@ export const User = mongoose.model('User', userSchema);
     });
     ```
 
-### Populating Related Documents;
+### Populating Related Documents:
 
 1. **Basic Population**
 
@@ -275,49 +278,57 @@ export const User = mongoose.model('User', userSchema);
     Post.find().populate('comments'); // Populate the virtual comments field
     ```
 
-### Example: User and Post Relationship
+### Example: User and Post Relationships:
 
-1. **Define the Schemas**
+#### Define the Schemas
+
+-   User Schema
 
     ```js
-    const mongoose = require('mongoose');
-
-    // User Schema
     const userSchema = new mongoose.Schema({
         name: String,
         email: String,
         followers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
         following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     });
+    ```
 
-    // Post Schema
+-   Post Schema
+
+    ```js
     const postSchema = new mongoose.Schema({
         author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
         title: String,
         content: String,
         createdAt: { type: Date, default: Date.now },
     });
+    ```
 
-    // Comment Schema
+-   Comment Schema
+
+    ```js
     const commentSchema = new mongoose.Schema({
         postId: { type: mongoose.Schema.Types.ObjectId, ref: 'Post' },
         content: String,
         createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
         createdAt: { type: Date, default: Date.now },
     });
+    ```
 
-    // Create models
+-   Create models
+
+    ```js
     const User = mongoose.model('User', userSchema);
     const Post = mongoose.model('Post', postSchema);
     const Comment = mongoose.model('Comment', commentSchema);
-
     module.exports = { User, Post, Comment };
     ```
 
-2. **Create and Populate Documents**
+#### Create and Populate Documents
+
+-   Create Users and Posts
 
     ```js
-    // 1. Create Users and Posts
     const user1 = new User({ name: 'Alice', email: 'alice@example.com' });
     const user2 = new User({ name: 'Bob', email: 'bob@example.com' });
 
@@ -330,12 +341,22 @@ export const User = mongoose.model('User', userSchema);
         content: 'This is the content',
     });
     await post.save();
+    ```
 
-    // 2. Populate the Author in Post
+-   Populate the Author in Post
+
+    ```js
     Post.find().populate('author', 'name email');
+    ```
 
-    // 3. Deep Populate with Comments
-    const comment = new Comment({ postId: post._id, content: 'Nice post!', createdBy: user2._id });
+-   Deep Populate with Comments
+
+    ```js
+    const comment = new Comment({
+        postId: post._id,
+        content: 'Nice post!',
+        createdBy: user2._id,
+    });
     await comment.save();
 
     Post.find()
