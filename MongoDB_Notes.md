@@ -1,16 +1,33 @@
+1. **Database**: It is a systematic collection of organized data, stored in a way that allows for efficient retrieval and manipulation.
+
+    - **Key Characteristics:**
+
+        - Collection of related data
+        - Organized structure
+        - Stored electronically
+        - Easily retrievable
+        - Scalable
+
+    - **Database Types:**
+        - Relational databases (RDBMS): MySQL, PostgreSQL, SQL Server
+        - NoSQL databases: MongoDB, Cassandra, Redis
+        - Graph databases: Neo4j, Amazon Neptune
+        - Time-series databases: InfluxDB, OpenTSDB
+        - Cloud databases: AWS Aurora, Google Cloud SQL
+
 1. **MongoDB**: MongoDB is a NoSQL database that stores data in JSON-like documents. It Advantages of Schema flexibility, horizontal scalability, high availability, and dynamic queries.
 
-2. **Document:** A document is a set of key-value pairs, similar to a JSON object. Documents are the basic unit of data in MongoDB and are stored in collections.
+1. **Document:** A document is a set of key-value pairs, similar to a JSON object. Documents are the basic unit of data in MongoDB and are stored in collections.
 
-3. **Collections:** A collection is a group of MongoDB documents, similar to a table in relational databases. Collections do not enforce a schema, allowing documents within them to have different structures.
+1. **Collections:** A collection is a group of MongoDB documents, similar to a table in relational databases. Collections do not enforce a schema, allowing documents within them to have different structures.
 
-4. **Sharding**: Split your data into pieces (shards), and each pieces is stored on different server. It ways to distribute data across multiple servers
+1. **Sharding**: Split your data into pieces (shards), and each pieces is stored on different server. It ways to distribute data across multiple servers
 
-5. **Replication**: One server (primary) holds the original data, and other servers (secondaries) keep copies. If the primary fails, one of the secondaries can take over. It ways to distribute data across multiple servers
+1. **Replication**: One server (primary) holds the original data, and other servers (secondaries) keep copies. If the primary fails, one of the secondaries can take over. It ways to distribute data across multiple servers
 
-6. **Change Streams**: It provide real-time notifications of changes to documents in a collection, database, or deployment. They enable applications to react to data changes as they occur, which is useful for building real-time applications.
+1. **Change Streams**: It provide real-time notifications of changes to documents in a collection, database, or deployment. They enable applications to react to data changes as they occur, which is useful for building real-time applications.
 
-7. **Pre-save middleware to hash the password before saving it to the database**
+1. **Pre-save middleware to hash the password before saving it to the database**
 
     ```js
     userSchema.pre('save', async function (next) {
@@ -20,7 +37,7 @@
     });
     ```
 
-8. **Method to compare the provided password with the stored hashed password**
+1. **Method to compare the provided password with the stored hashed password**
 
     ```js
     userSchema.methods.isPasswordCorrect = async function (password) {
@@ -28,7 +45,7 @@
     };
     ```
 
-9. **Method to generate an access token for the user**
+1. **Method to generate an access token for the user**
 
     ```js
     userSchema.methods.generateToken = function () {
@@ -36,7 +53,7 @@
     };
     ```
 
-10. **Method to get access token for the user**
+1. **Method to get access token for the user**
 
     ```js
     userSchema.methods.getToken = function (token) {
@@ -44,7 +61,7 @@
     };
     ```
 
-11. **MongoDB Operation Lists**
+1. **MongoDB Operation Lists**
 
     ```js
     // CURD Operation
@@ -101,7 +118,7 @@
     });
     ```
 
-12. **Querying with Operators**
+1. **Querying with Operators**
 
     - **Comparison Operators**
 
@@ -119,7 +136,7 @@
         - `$not`: Inverts the effect of a query expression.
         - `$nor`: Joins query clauses with a logical NOR, returning all documents that fail to match both conditions.
 
-13. **Aggregation Pipeline Stages**
+1. **Aggregation Pipeline Stages**
 
     ```js
     // Match documents where age is greater than 30
@@ -147,7 +164,7 @@
     [{ $unwind: '$tags' }];
     ```
 
-14. **Create a Schema in Mongoose**
+1. **Create a Schema in Mongoose**
 
     ```js
     // Define the schema
@@ -194,7 +211,7 @@
     export const User = mongoose.model('User', userSchema);
     ```
 
-15. **Types of Relationships:**
+1. **Types of Relationships:**
 
     - **One-to-One**: A user has one profile.
 
@@ -225,7 +242,7 @@
     });
     ```
 
-16. **Populating Related Documents:**
+1. **Populating Related Documents:**
 
     1. **Basic Population**
 
